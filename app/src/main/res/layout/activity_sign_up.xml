@@ -45,7 +45,7 @@
             android:textSize="20dp"
             android:text="아이디 : "></TextView>
         <EditText
-            android:id="@+id/signUpId"
+            android:id="@+id/signUpUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="6"></EditText>
@@ -70,17 +70,18 @@
             android:textSize="20dp"
             android:text="비밀번호 : "></TextView>
         <EditText
+            android:id="@+id/signupPW"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="6"></EditText>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="20dp">
 
         <TextView
-            android:id="@+id/signupPW"
             android:layout_width="70dp"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
@@ -89,17 +90,20 @@
             android:textSize="20dp"
             android:text="생년월일 : "></TextView>
         <ImageButton
+            android:id="@+id/calendar"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:src="@drawable/calendar"
             ></ImageButton>
+
+
         <TextView
             android:id="@+id/birthText"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_weight="6"
             android:textColor="@color/black"
-            android:textSize="20dp"
-            android:layout_weight="6"></TextView>
+            android:textSize="20dp"></TextView>
 
     </LinearLayout>
     <LinearLayout
@@ -135,6 +139,7 @@
         android:layout_height="25dp"
         android:src="@drawable/shell"></ImageView>
     <Button
+        android:id="@+id/commitBtn"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:theme="@style/Platform.MaterialComponents"
