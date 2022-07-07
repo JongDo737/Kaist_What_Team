@@ -2,6 +2,7 @@ package com.example.whatmain;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -45,8 +46,13 @@ public class Login extends AppCompatActivity {
                 System.out.println(et_id.getText().toString()+"여기여기여기여기"+ et_password.getText().toString());
             }
         });
-
-
+        signupBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SignUp.class);
+                startActivity(intent);
+            }
+        });
 
 
     }
