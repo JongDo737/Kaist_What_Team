@@ -113,7 +113,7 @@ public class SignUp extends AppCompatActivity {
                 System.out.println(userDto.getUsername());
                 //회원가입 DB에 넣기
 
-                //다시 로그인 창
+                //회원가입 완료 후 다시 로그인 창
                 Intent intent = new Intent(getApplicationContext(),Login.class);
                 startActivity(intent);
             }
