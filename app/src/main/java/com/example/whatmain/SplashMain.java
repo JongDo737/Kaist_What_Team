@@ -19,7 +19,7 @@ public class SplashMain extends AppCompatActivity {
         System.out.println("123123123");
         VideoView videoView = findViewById(R.id.videoView);
         // sample.mp4 설정
-        Uri uri = Uri.parse("android.resource://" + getPackageName() + "/raw/splash");
+        Uri uri = Uri.parse("android.resource://" + getPackageName() + "/raw/alive");
         videoView.setVideoURI(uri);
         // 리스너 등록
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
@@ -35,11 +35,11 @@ public class SplashMain extends AppCompatActivity {
             @Override
             public void run() {
                 // TODO Auto-generated method stub
-                Intent i = new Intent(SplashMain.this, MainActivity.class);
+                Intent i = new Intent(SplashMain.this, Login.class);
                 startActivity(i);
                 finish();
 
             }
-        }, 2000);
+        }, 2500);
     }
 }

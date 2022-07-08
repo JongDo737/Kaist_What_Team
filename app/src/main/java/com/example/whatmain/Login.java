@@ -35,6 +35,7 @@ public class Login extends AppCompatActivity {
         naverBtn = findViewById(R.id.naverBtn);
         kakaoBtn = findViewById(R.id.kakaoBtn);
 
+        // 로그인 버튼
         signinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,8 +45,11 @@ public class Login extends AppCompatActivity {
                     System.out.println(et_id.getText().toString()+"여기여기여기여기"+ et_password.getText().toString());
                 }
                 System.out.println(et_id.getText().toString()+"여기여기여기여기"+ et_password.getText().toString());
+                Intent intent = new Intent(getApplicationContext(), BusanFoodStep1.class);
+                startActivity(intent);
             }
         });
+        // 회원가입 버튼
         signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

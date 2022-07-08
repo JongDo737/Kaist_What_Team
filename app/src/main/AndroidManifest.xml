@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.whatmain">
-
+    <uses-library android:name="com.google.android.maps"
+        tools:ignore="WrongManifestParent" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -16,6 +17,9 @@
         android:theme="@style/Theme.WhatMain"
         tools:targetApi="31">
         <activity
+            android:name=".FullImage"
+            android:exported="false" />
+        <activity
             android:name=".BusanFoodStep1"
             android:exported="false" />
         <activity
@@ -23,6 +27,9 @@
             android:exported="false" />
         <activity
             android:name=".Login"
+            android:exported="false" />
+        <activity
+            android:name=".SplashMain"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -34,5 +41,8 @@
             </intent-filter>
         </activity>
     </application>
+    <meta-data
+        android:name="com.google.android.geo.API_KEY"
+    android:value="AIzaSyCaBPji8eBJIEMgHedj3i2TgmcV9INUJvk" />
 
 </manifest>
