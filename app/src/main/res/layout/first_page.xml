@@ -1,8 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginLeft="50dp"
+    android:layout_marginRight="50dp"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp">
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/travel">
+        </ImageView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="종민님 안녕하세요!"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            >
+        </TextView>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="60dp"
+        >
+        <TextView
+            android:id="@+id/gola"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="골라"
+            android:layout_marginTop="10dp"
+            android:textSize="40dp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="30dp"
+            android:layout_gravity="left"
+            android:textStyle="bold"></TextView>
+        <View    android:layout_width="0dp"    android:layout_height="0dp"    android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="30dp"
+            android:src="@drawable/travel"></ImageView>
+
+        <TextView
+            android:id="@+id/bara"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="30dp"
+            android:text="봐라"
+            android:textColor="@color/black"
+            android:textSize="40dp"
+            android:textStyle="bold"
+            ></TextView>
+
+    </LinearLayout>
+
 
 
 
@@ -15,71 +84,140 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="70dp">
+        android:layout_marginTop="40dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="152dp"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="170dp"
+                android:background="@drawable/rounded_background"
+                >
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:width="150dp"
+                    android:height="120dp"
+                    android:src="@drawable/what_eat"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:background="@android:color/transparent"
 
-            <ImageButton
+                    >
+                </ImageButton>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:text="뭐 무글래?"
+                    android:textStyle="bold"
+
+                    android:textColor="@color/black"
+                    android:paddingTop="150dp"
+                    >
+                </TextView>
+            </FrameLayout>
+
+            <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:width="150dp"
-                android:height="120dp"
-                android:src="@drawable/what_eat"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
-                >
+                android:background="@drawable/rounded_background">
+                <ImageButton
+                    android:layout_width="130dp"
+                    android:layout_height="140dp"
+                    android:layout_margin="10dp"
+                    android:width="150dp"
+                    android:height="140dp"
+                    android:src="@drawable/activity"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:background="@android:color/transparent"
+                    >
+                </ImageButton>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:text="뭐 하까?"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:paddingTop="150dp">
+                </TextView>
+            </FrameLayout>
 
-            </ImageButton>
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:width="150dp"
-                android:height="120dp"
-                android:src="@drawable/activity"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
-                >
-
-            </ImageButton>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="152dp"
-            android:orientation="horizontal">
-
-            <ImageButton
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+            <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:width="150dp"
-                android:height="120dp"
-                android:src="@drawable/what_cloth"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter">
+                android:background="@drawable/rounded_background">
+                <ImageButton
+                    android:layout_width="150dp"
+                    android:layout_height="120dp"
+                    android:layout_margin="10dp"
+                    android:width="150dp"
+                    android:height="120dp"
+                    android:src="@drawable/what_cloth"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:background="@android:color/transparent">
+                </ImageButton>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:text="뭐 입을래?"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
 
-            </ImageButton>
+                    android:paddingTop="150dp">
+                </TextView>
+            </FrameLayout>
 
-            <ImageButton
+
+            <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:width="150dp"
-                android:height="120dp"
-                android:src="@drawable/what_shopping"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter">
+                android:background="@drawable/rounded_background">
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:width="150dp"
+                    android:height="120dp"
+                    android:src="@drawable/what_shopping"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:background="@android:color/transparent">
 
-            </ImageButton>
+                </ImageButton>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:text="뭐 살래?"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:paddingTop="150dp">
+                </TextView>
+            </FrameLayout>
+
         </LinearLayout>
 
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
