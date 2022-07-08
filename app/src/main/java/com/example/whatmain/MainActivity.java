@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 //        Intent i = new Intent(MainActivity.this,SplashMain.class);
 //        startActivity(i);
-        Intent i = new Intent(MainActivity.this,SplashMain.class);
+        Intent i = new Intent(MainActivity.this,weatherDislayTest.class);
         startActivity(i);
     }
 }
