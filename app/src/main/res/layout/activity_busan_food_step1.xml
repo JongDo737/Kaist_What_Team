@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="40dp"
-    android:layout_marginRight="40dp"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="20dp"
     android:orientation="vertical"
     tools:context=".BusanFoodStep1">
     <LinearLayout
@@ -64,36 +64,41 @@
                 android:id="@+id/keywordDate"
                 android:layout_width="67dp"
                 android:layout_height="23dp"
+                android:layout_marginRight="12dp"
+                android:background="@drawable/round_button"
                 android:text="#데이트"
                 android:textSize="13dp"
-                android:layout_marginRight="12dp"
-                android:background="@drawable/round_button"></androidx.appcompat.widget.AppCompatButton>
+                tools:ignore="TouchTargetSizeCheck"></androidx.appcompat.widget.AppCompatButton>
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/keywordParents"
                 android:layout_width="67dp"
                 android:layout_height="23dp"
+                android:layout_marginRight="12dp"
+                android:background="@drawable/round_button"
                 android:text="#부모님과"
                 android:textSize="13dp"
-                android:layout_marginRight="12dp"
-                android:background="@drawable/round_button"></androidx.appcompat.widget.AppCompatButton>
+                tools:ignore="TouchTargetSizeCheck"></androidx.appcompat.widget.AppCompatButton>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/keywordFriends"
                 android:layout_width="67dp"
                 android:layout_height="23dp"
+                android:layout_marginRight="12dp"
+                android:background="@drawable/round_button"
                 android:text="#친구와"
                 android:textSize="13dp"
-                android:layout_marginRight="12dp"
-                android:background="@drawable/round_button"></androidx.appcompat.widget.AppCompatButton>
+                tools:ignore="TouchTargetSizeCheck"></androidx.appcompat.widget.AppCompatButton>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/keywordAlone"
                 android:layout_width="67dp"
                 android:layout_height="23dp"
+                android:layout_marginRight="12dp"
+                android:background="@drawable/round_button"
                 android:text="#혼자"
                 android:textSize="13dp"
-                android:layout_marginRight="12dp"
-                android:background="@drawable/round_button"></androidx.appcompat.widget.AppCompatButton>
+                tools:ignore="TouchTargetSizeCheck"></androidx.appcompat.widget.AppCompatButton>
 
         </LinearLayout>
         <LinearLayout
@@ -104,29 +109,32 @@
                 android:id="@+id/keywordYammy"
                 android:layout_width="67dp"
                 android:layout_height="23dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="12dp"
+                android:background="@drawable/round_button"
                 android:text="#맛집"
                 android:textSize="13dp"
-                android:layout_marginRight="12dp"
-                android:layout_marginLeft="40dp"
-                android:background="@drawable/round_button"></androidx.appcompat.widget.AppCompatButton>
+                tools:ignore="TouchTargetSizeCheck"></androidx.appcompat.widget.AppCompatButton>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/keywordCafe"
                 android:layout_width="67dp"
                 android:layout_height="23dp"
+                android:layout_marginRight="12dp"
+                android:background="@drawable/round_button"
                 android:text="#카페"
                 android:textSize="13dp"
-                android:layout_marginRight="12dp"
-                android:background="@drawable/round_button"></androidx.appcompat.widget.AppCompatButton>
+                tools:ignore="TouchTargetSizeCheck"></androidx.appcompat.widget.AppCompatButton>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/keywordDrink"
                 android:layout_width="67dp"
                 android:layout_height="23dp"
+                android:layout_marginRight="12dp"
+                android:background="@drawable/round_button"
                 android:text="#술"
                 android:textSize="13dp"
-                android:layout_marginRight="12dp"
-                android:background="@drawable/round_button"></androidx.appcompat.widget.AppCompatButton>
+                tools:ignore="TouchTargetSizeCheck"></androidx.appcompat.widget.AppCompatButton>
 
         </LinearLayout>
         <LinearLayout
@@ -137,41 +145,48 @@
                 android:id="@+id/keywordRomantic"
                 android:layout_width="67dp"
                 android:layout_height="23dp"
+                android:layout_marginRight="12dp"
+                android:background="@drawable/round_button"
                 android:text="#로맨틱"
                 android:textSize="13dp"
-                android:layout_marginRight="12dp"
-                android:background="@drawable/round_button"></androidx.appcompat.widget.AppCompatButton>
+                tools:ignore="TouchTargetSizeCheck"></androidx.appcompat.widget.AppCompatButton>
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/keywordRomance"
                 android:layout_width="67dp"
                 android:layout_height="23dp"
+                android:layout_marginRight="12dp"
+                android:background="@drawable/round_button"
                 android:text="#낭만"
                 android:textSize="13dp"
-                android:layout_marginRight="12dp"
-                android:background="@drawable/round_button"></androidx.appcompat.widget.AppCompatButton>
+                tools:ignore="TouchTargetSizeCheck"></androidx.appcompat.widget.AppCompatButton>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/keySeafood"
                 android:layout_width="67dp"
                 android:layout_height="23dp"
+                android:layout_marginRight="12dp"
+                android:background="@drawable/round_button"
                 android:text="#해산물"
                 android:textSize="13dp"
-                android:layout_marginRight="12dp"
-                android:background="@drawable/round_button"></androidx.appcompat.widget.AppCompatButton>
+                tools:ignore="TouchTargetSizeCheck"></androidx.appcompat.widget.AppCompatButton>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/keyOcean"
                 android:layout_width="67dp"
                 android:layout_height="23dp"
+                android:layout_marginRight="12dp"
+                android:background="@drawable/round_button"
                 android:text="#바다"
                 android:textSize="13dp"
-                android:layout_marginRight="12dp"
-                android:background="@drawable/round_button"></androidx.appcompat.widget.AppCompatButton>
+                tools:ignore="TouchTargetSizeCheck"></androidx.appcompat.widget.AppCompatButton>
 
         </LinearLayout>
 
     </LinearLayout>
     <ListView
+        android:clickable="true"
+        android:smoothScrollbar="true"
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginLeft="50dp"
@@ -82,46 +83,55 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp">
-                <androidx.appcompat.widget.AppCompatButton
+
+                <TextView
                     android:id="@+id/tag1"
                     android:layout_width="67dp"
                     android:layout_height="23dp"
-                    android:text="#바다"
-                    android:textSize="13dp"
                     android:layout_marginRight="12dp"
+                    android:background="@drawable/round_button"
+                    android:gravity="center"
+                    android:text="#바다"
                     android:textColor="@color/black"
-                    android:background="@drawable/round_button"></androidx.appcompat.widget.AppCompatButton>
-                <androidx.appcompat.widget.AppCompatButton
+                    android:textSize="13dp"
+                    tools:ignore="TouchTargetSizeCheck"></TextView>
+
+                <TextView
                     android:id="@+id/tag2"
                     android:layout_width="67dp"
                     android:layout_height="23dp"
-                    android:text="#술"
-                    android:textSize="13dp"
                     android:layout_marginRight="12dp"
+                    android:background="@drawable/round_button"
+                    android:text="#술"
+                    android:gravity="center"
                     android:textColor="@color/black"
-                    android:background="@drawable/round_button"></androidx.appcompat.widget.AppCompatButton>
-                <androidx.appcompat.widget.AppCompatButton
+                    android:textSize="13dp"
+                    tools:ignore="TouchTargetSizeCheck"></TextView>
+
+                <TextView
                     android:id="@+id/tag3"
                     android:layout_width="67dp"
                     android:layout_height="23dp"
-                    android:text="#낭만"
-                    android:textSize="13dp"
                     android:layout_marginRight="12dp"
+                    android:gravity="center"
+                    android:background="@drawable/round_button"
+                    android:text="#낭만"
                     android:textColor="@color/black"
-                    android:background="@drawable/round_button"></androidx.appcompat.widget.AppCompatButton>
+                    android:textSize="13dp"
+                    tools:ignore="TouchTargetSizeCheck"></TextView>
 
             </LinearLayout>
 
 
         </LinearLayout>
-        <ImageButton
+        <ImageView
             android:id="@+id/heartClick"
             android:layout_width="30dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:background="@color/white"
             android:layout_marginRight="15dp"
-            android:src="@drawable/heart"></ImageButton>
+            android:src="@drawable/heart"></ImageView>
     </LinearLayout>
 
 

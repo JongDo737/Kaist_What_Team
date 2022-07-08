@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -83,10 +84,14 @@ public class BusanFoodStep1 extends AppCompatActivity {
 
         //리스트뷰에 Adapter 설정
         listView.setAdapter(adapter);
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // position 값이랑 Dto 넘겨주기
+                System.out.println("리스트뷰 클릭 !!!!!!!!"+position);
+                Intent intent = new Intent(getApplicationContext(), FullImage.class);
+                startActivity(intent);
             }
         });
 
@@ -440,10 +445,10 @@ public class BusanFoodStep1 extends AppCompatActivity {
             TextView mainTitle = (TextView) convertView.findViewById(R.id.mainTitle);
             TextView subTitle = (TextView) convertView.findViewById(R.id.subTitle);
             TextView place = (TextView) convertView.findViewById(R.id.mainContext);
-            Button tag1 = (Button) convertView.findViewById(R.id.tag1);
-            Button tag2 = (Button) convertView.findViewById(R.id.tag2);
-            Button tag3 = (Button) convertView.findViewById(R.id.tag3);
-            ImageButton heartClick = (ImageButton) convertView.findViewById(R.id.heartClick);
+            TextView tag1 = (TextView) convertView.findViewById(R.id.tag1);
+            TextView tag2 = (TextView) convertView.findViewById(R.id.tag2);
+            TextView tag3 = (TextView) convertView.findViewById(R.id.tag3);
+            ImageView heartClick = (ImageView) convertView.findViewById(R.id.heartClick);
 
             mainImg.setImageBitmap(busanFoodDto.getImg());
             mainTitle.setText(busanFoodDto.getMainTitle());
@@ -454,12 +459,12 @@ public class BusanFoodStep1 extends AppCompatActivity {
             tag3.setText(busanFoodDto.getTag3());
 
             //각 아이템 선택 event
-            convertView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(context, busanFoodDto.getMainTitle(),Toast.LENGTH_SHORT).show();
-                }
-            });
+//            convertView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    Toast.makeText(context, busanFoodDto.getMainTitle(),Toast.LENGTH_SHORT).show();
+//                }
+//            });
             heartClick.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

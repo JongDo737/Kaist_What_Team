@@ -12,6 +12,8 @@ public class BusanFoodDto {
     String tag1;
     String tag2;
     String tag3;
+    double latitude;
+    double longitude;
     public String getMainTitle() {
         return mainTitle;
     }
@@ -65,5 +67,17 @@ public class BusanFoodDto {
     }
     public void setTag3(String tag3) {
         this.tag3 = tag3;
+    }
+    public double getLongitude() {
+        return longitude;
+    }
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+    public double getLatitude() {
+        return latitude;
+    }
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
     }
 }
