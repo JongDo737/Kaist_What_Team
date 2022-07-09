@@ -23,6 +23,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 public class BusanFoodStep1 extends AppCompatActivity {
@@ -70,7 +72,11 @@ public class BusanFoodStep1 extends AppCompatActivity {
         busanFoodDto.setMainTitle("해운대포장마차존");
         busanFoodDto.setSubTitle("낭만 추억 만들어 주는 해운대 포장마차");
         Resources resources = this.getResources();
-        busanFoodDto.setImg(BitmapFactory.decodeResource(resources, R.drawable.haeundae));
+        //busanFoodDto.setImg(BitmapFactory.decodeResource(resources, R.drawable.haeundae));
+        // Glide로 이미지 표시하기
+        String imageUrl = "https://www.visitbusan.net/uploadImgs/files/cntnts/20191230180157336_ttiel";
+        busanFoodDto.setImg(imageUrl);
+
         busanFoodDto.setPlace("해운대포장마차촌");
         busanFoodDto.setTag1("#바다");
         busanFoodDto.setTag2("#술");
@@ -89,14 +95,11 @@ public class BusanFoodStep1 extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // position 값이랑 Dto 넘겨주기
-                System.out.println("리스트뷰 클릭 !!!!!!!!"+position);
+                System.out.println("리스트뷰 클릭: food !!!!!!!!"+position);
                 Intent intent = new Intent(getApplicationContext(), FullImage.class);
                 startActivity(intent);
             }
         });
-
-
-
 
         // 키워드 클릭
         keywordDate.setOnClickListener(new View.OnClickListener() {
@@ -450,7 +453,9 @@ public class BusanFoodStep1 extends AppCompatActivity {
             TextView tag3 = (TextView) convertView.findViewById(R.id.tag3);
             ImageView heartClick = (ImageView) convertView.findViewById(R.id.heartClick);
 
-            mainImg.setImageBitmap(busanFoodDto.getImg());
+            //mainImg.setImageBitmap(busanFoodDto.getImg());
+            Glide.with(getApplicationContext()).load(busanFoodDto.getImg()).into(mainImg);
+
             mainTitle.setText(busanFoodDto.getMainTitle());
             place.setText(busanFoodDto.getPlace());
             subTitle.setText(busanFoodDto.getSubTitle());

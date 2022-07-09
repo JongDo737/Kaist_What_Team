@@ -2,18 +2,42 @@ package com.example.whatmain;
 
 import android.graphics.Bitmap;
 
-public class BusanFoodDto {
+public class BusanFestivalDto {
     String mainTitle ;
     String place;
     String subTitle;
     String shortContext;
     String img;
     String context;
-    String tag1;
-    String tag2;
-    String tag3;
     double latitude;
     double longitude;
+    String homePage;
+    String date;
+
+    public double getLatitude() {
+        return latitude;
+    }
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+    public double getLongitude() {
+        return longitude;
+    }
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+    public String getHomePage() {
+        return homePage;
+    }
+    public void setHomePage(String homePage) {
+        this.homePage = homePage;
+    }
+    public String getDate() {
+        return date;
+    }
+    public void setDate(String date) {
+        this.date = date;
+    }
     public String getMainTitle() {
         return mainTitle;
     }
@@ -49,35 +73,5 @@ public class BusanFoodDto {
     }
     public void setContext(String context) {
         this.context = context;
-    }
-    public String getTag1() {
-        return tag1;
-    }
-    public void setTag1(String tag1) {
-        this.tag1 = tag1;
-    }
-    public String getTag2() {
-        return tag2;
-    }
-    public void setTag2(String tag2) {
-        this.tag2 = tag2;
-    }
-    public String getTag3() {
-        return tag3;
-    }
-    public void setTag3(String tag3) {
-        this.tag3 = tag3;
-    }
-    public double getLongitude() {
-        return longitude;
-    }
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
-    }
-    public double getLatitude() {
-        return latitude;
-    }
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
     }
 }

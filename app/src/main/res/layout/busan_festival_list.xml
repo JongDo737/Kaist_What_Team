@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="50dp"
+    android:layout_marginRight="50dp"
+    android:layout_marginTop="15dp"
+    android:orientation="vertical">
+
+
+    <ImageView
+        android:id="@+id/mainImg"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:src="@drawable/haeundae"
+        android:scaleType="center"
+        ></ImageView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/mainTitle"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="부산불꽃축제"
+                android:gravity="center_vertical"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                ></TextView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="제목 : "
+                    android:gravity="center_vertical"
+                    android:textSize="13dp"
+                    ></TextView>
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="아름다운 부산 밤하늘의 하모니, 부산불꽃축제"
+                    android:gravity="center_vertical"
+                    android:textSize="13dp"
+                    android:layout_marginLeft="5dp"
+                    ></TextView>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="기간 : "
+                    android:gravity="center_vertical"
+                    android:textSize="13dp"
+                    ></TextView>
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="매년 11월 불꽃쇼 20:00 ~ 21:00"
+                    android:gravity="center_vertical"
+                    android:textSize="13dp"
+                    android:layout_marginLeft="5dp"
+                    ></TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="위치 : "
+                    android:gravity="center_vertical"
+                    android:textSize="13dp"
+                    ></TextView>
+                <TextView
+                    android:id="@+id/mainContext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="부산 수영구 광안해변로 219"
+                    android:gravity="center_vertical"
+                    android:textSize="13dp"
+                    android:layout_marginLeft="5dp"
+                    ></TextView>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/heartClick"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            android:layout_marginRight="6dp"
+            android:src="@drawable/heart"></ImageView>
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

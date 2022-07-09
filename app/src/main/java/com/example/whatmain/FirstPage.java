@@ -14,7 +14,7 @@ public class FirstPage extends AppCompatActivity {
     FrameLayout foodFrame;
     FrameLayout enterFrame;
     FrameLayout dressFrame;
-    FrameLayout buyFrame;
+    FrameLayout festivalFrame;
     ImageView weatherImg;
     TextView degree;
     TextView rainPorb;
@@ -27,12 +27,19 @@ public class FirstPage extends AppCompatActivity {
         foodFrame = findViewById(R.id.foodFrame);
         enterFrame = findViewById(R.id.enterFrame);
         dressFrame = findViewById(R.id.dressFrame);
-        buyFrame = findViewById(R.id.buyFrame);
+        festivalFrame = findViewById(R.id.festivalFrame);
 
         foodFrame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),BusanFoodStep1.class);
+                startActivity(intent);
+            }
+        });
+        festivalFrame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),BusanFestivalStep1.class);
                 startActivity(intent);
             }
         });
