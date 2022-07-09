@@ -7,8 +7,6 @@ public class UserDto {
     String password;
     String birth;
     String gender;
-    String provider;
-    String role;
     String create_date;
     String update_date;
     public int getId() {
@@ -47,18 +45,6 @@ public class UserDto {
     }
     public void setGender(String gender) {
         this.gender = gender;
-    }
-    public String getProvider() {
-        return provider;
-    }
-    public void setProvider(String provider) {
-        this.provider = provider;
-    }
-    public String getRole() {
-        return role;
-    }
-    public void setRole(String role) {
-        this.role = role;
     }
     public String getCreate_date() {
         return create_date;

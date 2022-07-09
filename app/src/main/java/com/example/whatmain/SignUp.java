@@ -33,6 +33,7 @@ public class SignUp extends AppCompatActivity {
     Button commitBtn;
 
     DatePickerDialog datePickerDialog;
+    NowDate nowDate = new NowDate();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,14 +106,22 @@ public class SignUp extends AppCompatActivity {
                 userDto.setUsername(signUpUsername.getText().toString());
                 userDto.setPassword(signupPW.getText().toString());
                 userDto.setBirth(birthText.getText().toString());
+                userDto.setCreate_date(nowDate.getDate());
+                userDto.setUpdate_date(nowDate.getDate());
                 if (checkMale.isChecked()) {
-                    userDto.setGender("남성");
+                    userDto.setGender("male");
                 } else if(checkFemale.isChecked()){
-                    userDto.setGender("여성");
+                    userDto.setGender("female");
                 }
                 System.out.println(userDto.getUsername());
+                System.out.println(userDto.getPassword());
+                System.out.println(userDto.getBirth());
+                System.out.println(userDto.getGender());
+                System.out.println(userDto.getCreate_date());
+                System.out.println(userDto.getUpdate_date());
                 //회원가입 DB에 넣기
-
+                DBconnect dBconnect = new DBconnect();
+                dBconnect.insertUser(userDto);
                 //회원가입 완료 후 다시 로그인 창
                 Intent intent = new Intent(getApplicationContext(),Login.class);
                 startActivity(intent);
