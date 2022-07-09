@@ -15,6 +15,10 @@
         android:theme="@style/Theme.WhatMain"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+        <activity
+            android:name=".DBconnect"
+            android:exported="false" />
         <activity
             android:name=".BusanFestivalStep1"
             android:exported="false" />
