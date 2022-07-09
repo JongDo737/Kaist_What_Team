@@ -45,7 +45,7 @@ public class Login extends AppCompatActivity {
                     System.out.println(et_id.getText().toString()+"여기여기여기여기"+ et_password.getText().toString());
                 }
                 System.out.println(et_id.getText().toString()+"여기여기여기여기"+ et_password.getText().toString());
-                Intent intent = new Intent(getApplicationContext(), BusanFoodStep1.class);
+                Intent intent = new Intent(getApplicationContext(), FirstPage.class);
                 startActivity(intent);
             }
         });

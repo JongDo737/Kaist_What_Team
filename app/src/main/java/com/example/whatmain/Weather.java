@@ -19,6 +19,10 @@ public class Weather {
         this.rain_amount = rain_amount;
     }
 
+    public Weather() {
+
+    }
+
     public String getCity() {
         return city;
     }
