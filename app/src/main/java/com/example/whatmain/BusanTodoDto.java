@@ -3,8 +3,8 @@ package com.example.whatmain;
 import android.graphics.Bitmap;
 
 import java.io.Serializable;
+public class BusanTodoDto implements Serializable{
 
-public class BusanFoodDto implements Serializable {
     String mainTitle ;
     String place;
     String subTitle;

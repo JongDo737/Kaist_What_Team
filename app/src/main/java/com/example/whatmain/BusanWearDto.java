@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 
 import java.io.Serializable;
 
-public class BusanFoodDto implements Serializable {
+public class BusanWearDto implements Serializable {
     String mainTitle ;
     String place;
     String subTitle;

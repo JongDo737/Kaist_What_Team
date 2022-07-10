@@ -27,7 +27,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-public class BusanFoodStep1 extends AppCompatActivity {
+public class BusanWearStep1 extends AppCompatActivity {
     Button keywordDate;
     Button keywordParents;
     Button keywordFriends;
@@ -44,14 +44,14 @@ public class BusanFoodStep1 extends AppCompatActivity {
     ListViewAdapter adapter = null;
     boolean clickCheck[]= new boolean[11];
     ArrayList<String> tags = new ArrayList<>();
-    ArrayList<BusanFoodDto> FoodList = new ArrayList<>();
+    ArrayList<BusanWearDto> WearList = new ArrayList<>();
 
-    BusanFoodDto busanFoodDto;
+    BusanWearDto busanFWearDto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_busan_food_step1);
+        setContentView(R.layout.activity_busan_wear_step1);
         keywordDate = findViewById(R.id.keywordDate);
         keywordParents = findViewById(R.id.keywordParents);
         keywordFriends = findViewById(R.id.keywordFriends);
@@ -65,26 +65,26 @@ public class BusanFoodStep1 extends AppCompatActivity {
         keyOcean = findViewById(R.id.keyOcean);
 
         listView = (ListView) findViewById(R.id.listView);
-        adapter = new ListViewAdapter(this, FoodList);
+        adapter = new ListViewAdapter(this, WearList);
 
         // 임의의 데이터 삽입///////////////////////////////////////////////
-        busanFoodDto = new BusanFoodDto();
-        busanFoodDto.setMainTitle("해운대포장마차존");
-        busanFoodDto.setSubTitle("낭만 추억 만들어 주는 해운대 포장마차");
+        busanFWearDto = new BusanWearDto();
+        busanFWearDto.setMainTitle("해운대포장마차존");
+        busanFWearDto.setSubTitle("낭만 추억 만들어 주는 해운대 포장마차");
         Resources resources = this.getResources();
-        //busanFoodDto.setImg(BitmapFactory.decodeResource(resources, R.drawable.haeundae));
+        //busanFWearDto.setImg(BitmapFactory.decodeResource(resources, R.drawable.haeundae));
         // Glide로 이미지 표시하기
         String imageUrl = "https://www.visitbusan.net/uploadImgs/files/cntnts/20191230180157336_ttiel";
-        busanFoodDto.setImg(imageUrl);
+        busanFWearDto.setImg(imageUrl);
 
-        busanFoodDto.setPlace("해운대포장마차촌");
-        busanFoodDto.setTag1("#바다");
-        busanFoodDto.setTag2("#술");
-        busanFoodDto.setTag3("#낭만");
-        FoodList.add(busanFoodDto);
-        FoodList.add(busanFoodDto);
-        FoodList.add(busanFoodDto);
-        FoodList.add(busanFoodDto);
+        busanFWearDto.setPlace("해운대포장마차촌");
+        busanFWearDto.setTag1("#바다");
+        busanFWearDto.setTag2("#술");
+        busanFWearDto.setTag3("#낭만");
+        WearList.add(busanFWearDto);
+        WearList.add(busanFWearDto);
+        WearList.add(busanFWearDto);
+        WearList.add(busanFWearDto);
         ///////////////////////////////////////////////////////////////
 
 
@@ -95,10 +95,10 @@ public class BusanFoodStep1 extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // position 값이랑 Dto 넘겨주기
-                System.out.println("리스트뷰 클릭: food !!!!!!!!"+position);
+                System.out.println("리스트뷰 클릭: wear !!!!!!!!"+position);
                 Intent intent = new Intent(getApplicationContext(), FullImage.class);
                 intent.putExtra("position",Integer.toString(position));
-                intent.putExtra("festivalList",FoodList);
+                intent.putExtra("festivalList",WearList);
                 startActivity(intent);
             }
         });
@@ -116,7 +116,7 @@ public class BusanFoodStep1 extends AppCompatActivity {
                         addTag(keywordDate.getText().toString());
                     }else {
                         System.out.println("세개이상 선택!!!!!!!!");
-                        Toast.makeText(BusanFoodStep1.this, "태그는 3개까지 선택 가능합니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(BusanWearStep1.this, "태그는 3개까지 선택 가능합니다.", Toast.LENGTH_SHORT).show();
                     }
 
                 }else{ // 다시 체크
@@ -140,7 +140,7 @@ public class BusanFoodStep1 extends AppCompatActivity {
                         addTag(keywordParents.getText().toString());
                     }else {
                         System.out.println("세개이상 선택!!!!!!!!");
-                        Toast.makeText(BusanFoodStep1.this, "태그는 3개까지 선택 가능합니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(BusanWearStep1.this, "태그는 3개까지 선택 가능합니다.", Toast.LENGTH_SHORT).show();
                     }
 
                 }else{ // 다시 체크
@@ -164,7 +164,7 @@ public class BusanFoodStep1 extends AppCompatActivity {
                         addTag(keywordFriends.getText().toString());
                     }else {
                         System.out.println("세개이상 선택!!!!!!!!");
-                        Toast.makeText(BusanFoodStep1.this, "태그는 3개까지 선택 가능합니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(BusanWearStep1.this, "태그는 3개까지 선택 가능합니다.", Toast.LENGTH_SHORT).show();
                     }
 
                 }else{ // 다시 체크
@@ -188,7 +188,7 @@ public class BusanFoodStep1 extends AppCompatActivity {
                         addTag(keywordAlone.getText().toString());
                     }else {
                         System.out.println("세개이상 선택!!!!!!!!");
-                        Toast.makeText(BusanFoodStep1.this, "태그는 3개까지 선택 가능합니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(BusanWearStep1.this, "태그는 3개까지 선택 가능합니다.", Toast.LENGTH_SHORT).show();
                     }
 
                 }else{ // 다시 체크
@@ -212,7 +212,7 @@ public class BusanFoodStep1 extends AppCompatActivity {
                         addTag(keywordYammy.getText().toString());
                     }else {
                         System.out.println("세개이상 선택!!!!!!!!");
-                        Toast.makeText(BusanFoodStep1.this, "태그는 3개까지 선택 가능합니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(BusanWearStep1.this, "태그는 3개까지 선택 가능합니다.", Toast.LENGTH_SHORT).show();
                     }
 
                 }else{ // 다시 체크
@@ -236,7 +236,7 @@ public class BusanFoodStep1 extends AppCompatActivity {
                         addTag(keywordCafe.getText().toString());
                     }else {
                         System.out.println("세개이상 선택!!!!!!!!");
-                        Toast.makeText(BusanFoodStep1.this, "태그는 3개까지 선택 가능합니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(BusanWearStep1.this, "태그는 3개까지 선택 가능합니다.", Toast.LENGTH_SHORT).show();
                     }
 
                 }else{ // 다시 체크
@@ -260,7 +260,7 @@ public class BusanFoodStep1 extends AppCompatActivity {
                         addTag(keywordDrink.getText().toString());
                     }else {
                         System.out.println("세개이상 선택!!!!!!!!");
-                        Toast.makeText(BusanFoodStep1.this, "태그는 3개까지 선택 가능합니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(BusanWearStep1.this, "태그는 3개까지 선택 가능합니다.", Toast.LENGTH_SHORT).show();
                     }
 
                 }else{ // 다시 체크
@@ -284,7 +284,7 @@ public class BusanFoodStep1 extends AppCompatActivity {
                         addTag(keywordRomantic.getText().toString());
                     }else {
                         System.out.println("세개이상 선택!!!!!!!!");
-                        Toast.makeText(BusanFoodStep1.this, "태그는 3개까지 선택 가능합니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(BusanWearStep1.this, "태그는 3개까지 선택 가능합니다.", Toast.LENGTH_SHORT).show();
                     }
 
                 }else{ // 다시 체크
@@ -308,7 +308,7 @@ public class BusanFoodStep1 extends AppCompatActivity {
                         addTag(keywordRomance.getText().toString());
                     }else {
                         System.out.println("세개이상 선택!!!!!!!!");
-                        Toast.makeText(BusanFoodStep1.this, "태그는 3개까지 선택 가능합니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(BusanWearStep1.this, "태그는 3개까지 선택 가능합니다.", Toast.LENGTH_SHORT).show();
                     }
 
                 }else{ // 다시 체크
@@ -332,7 +332,7 @@ public class BusanFoodStep1 extends AppCompatActivity {
                         addTag(keySeafood.getText().toString());
                     }else {
                         System.out.println("세개이상 선택!!!!!!!!");
-                        Toast.makeText(BusanFoodStep1.this, "태그는 3개까지 선택 가능합니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(BusanWearStep1.this, "태그는 3개까지 선택 가능합니다.", Toast.LENGTH_SHORT).show();
                     }
 
                 }else{ // 다시 체크
@@ -356,7 +356,7 @@ public class BusanFoodStep1 extends AppCompatActivity {
                         addTag(keyOcean.getText().toString());
                     }else {
                         System.out.println("세개이상 선택!!!!!!!!");
-                        Toast.makeText(BusanFoodStep1.this, "태그는 3개까지 선택 가능합니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(BusanWearStep1.this, "태그는 3개까지 선택 가능합니다.", Toast.LENGTH_SHORT).show();
                     }
 
                 }else{ // 다시 체크
@@ -405,10 +405,10 @@ public class BusanFoodStep1 extends AppCompatActivity {
 
     /* 리스트뷰 어댑터 */
     public class ListViewAdapter extends BaseAdapter {
-        ArrayList<BusanFoodDto> items = new ArrayList<>();
+        ArrayList<BusanWearDto> items = new ArrayList<>();
         Context mContext = null;
         LayoutInflater mLayoutInflater = null;
-        public ListViewAdapter(Context context, ArrayList<BusanFoodDto> data) {
+        public ListViewAdapter(Context context, ArrayList<BusanWearDto> data) {
             mContext = context;
             items = data;
             mLayoutInflater = LayoutInflater.from(mContext);
@@ -419,7 +419,7 @@ public class BusanFoodStep1 extends AppCompatActivity {
             return items.size();
         }
 
-        public void addItem(BusanFoodDto item) {
+        public void addItem(BusanWearDto item) {
             items.add(item);
         }
 
@@ -436,11 +436,11 @@ public class BusanFoodStep1 extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup viewGroup) {
             final Context context = viewGroup.getContext();
-            final BusanFoodDto busanFoodDto = items.get(position);
+            final BusanWearDto busanFWearDto = items.get(position);
 
             if(convertView == null) {
                 LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                convertView = inflater.inflate(R.layout.busan_food_list, viewGroup, false);
+                convertView = inflater.inflate(R.layout.busan_wear_list, viewGroup, false);
 
             } else {
                 View view = new View(context);
@@ -455,21 +455,21 @@ public class BusanFoodStep1 extends AppCompatActivity {
             TextView tag3 = (TextView) convertView.findViewById(R.id.tag3);
             ImageView heartClick = (ImageView) convertView.findViewById(R.id.heartClick);
 
-            //mainImg.setImageBitmap(busanFoodDto.getImg());
-            Glide.with(getApplicationContext()).load(busanFoodDto.getImg()).into(mainImg);
+            //mainImg.setImageBitmap(busanFWearDto.getImg());
+            Glide.with(getApplicationContext()).load(busanFWearDto.getImg()).into(mainImg);
 
-            mainTitle.setText(busanFoodDto.getMainTitle());
-            place.setText(busanFoodDto.getPlace());
-            subTitle.setText(busanFoodDto.getSubTitle());
-            tag1.setText(busanFoodDto.getTag1());
-            tag2.setText(busanFoodDto.getTag2());
-            tag3.setText(busanFoodDto.getTag3());
+            mainTitle.setText(busanFWearDto.getMainTitle());
+            place.setText(busanFWearDto.getPlace());
+            subTitle.setText(busanFWearDto.getSubTitle());
+            tag1.setText(busanFWearDto.getTag1());
+            tag2.setText(busanFWearDto.getTag2());
+            tag3.setText(busanFWearDto.getTag3());
 
             //각 아이템 선택 event
 //            convertView.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View view) {
-//                    Toast.makeText(context, busanFoodDto.getMainTitle(),Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(context, busanFWearDto.getMainTitle(),Toast.LENGTH_SHORT).show();
 //                }
 //            });
             heartClick.setOnClickListener(new View.OnClickListener() {

@@ -41,11 +41,12 @@
                 android:layout_weight="1"
                 android:layout_height="50dp"
                 android:orientation="vertical">
-                <ImageButton
+                <ImageView
+                    android:id="@+id/heartSave"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/heart"></ImageButton>
+                    android:src="@drawable/heart"></ImageView>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
@@ -58,11 +59,11 @@
                 android:layout_weight="1"
                 android:layout_height="50dp"
                 android:orientation="vertical">
-                <ImageButton
+                <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/calendar2"></ImageButton>
+                    android:src="@drawable/calendar2"></ImageView>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
@@ -75,11 +76,11 @@
                 android:layout_weight="1"
                 android:layout_height="50dp"
                 android:orientation="vertical">
-                <ImageButton
+                <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/star"></ImageButton>
+                    android:src="@drawable/star"></ImageView>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
@@ -92,12 +93,12 @@
                 android:layout_weight="1"
                 android:layout_height="50dp"
                 android:orientation="vertical">
-                <ImageButton
+                <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
                     android:background="@color/white"
-                    android:src="@drawable/upload"></ImageButton>
+                    android:src="@drawable/upload"></ImageView>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="20dp"

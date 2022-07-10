@@ -43,6 +43,20 @@ public class FirstPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        enterFrame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),BusanTodoStep1.class);
+                startActivity(intent);
+            }
+        });
+        dressFrame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),BusanWearStep1.class);
+                startActivity(intent);
+            }
+        });
     }
     public void setWeather(){
         weatherBackground = findViewById(R.id.weatherBackground);
@@ -87,8 +101,5 @@ public class FirstPage extends AppCompatActivity {
             weatherImg.setImageResource(R.drawable.snow);
             rainPorb.setText("강수량 : "+weather[5]+"mm");
         }
-
-
-
     }
 }
