@@ -222,8 +222,7 @@ public class DBconnect extends AppCompatActivity implements DBconnectImpl{
             busanFoodDto.setSubTitle((String)jsonObject.get("subTitle"));
             busanFoodDto.setImg((String)jsonObject.get("img"));
             busanFoodDto.setContext((String)jsonObject.get("context"));
-            busanFoodDto.setCall((String)jsonObject.get("call"));
-
+            busanFoodDto.setCall((String)((String) jsonObject.get("tel")).replaceAll("-",""));
             //태그 작업
             String tags = (String)jsonObject.get("tag1");
             String[] arrTags = tags.split(" ");

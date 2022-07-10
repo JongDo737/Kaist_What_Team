@@ -36,14 +36,12 @@ public class BusanFoodStep1 extends AppCompatActivity {
     Button keySeafood;
     Button keyOcean;
 
-    ListView listView;
-    ListViewAdapter adapter = null;
+    ListView listView ;
+    ListViewAdapter adapter;
     boolean clickCheck[]= new boolean[11];
     ArrayList<String> tags = new ArrayList<>();
-    //ArrayList<BusanFoodDto> FoodList = new ArrayList<>();
     ArrayList<BusanFoodDto> busanFoodDtoListBytags = new ArrayList<>();
 
-    BusanFoodDto busanFoodDto;
     DBconnectImpl dBconnect = new DBconnect();
 
     @Override
@@ -63,51 +61,6 @@ public class BusanFoodStep1 extends AppCompatActivity {
         keyOcean = findViewById(R.id.keyOcean);
 
         listView = (ListView) findViewById(R.id.listView);
-        adapter = new ListViewAdapter(this, busanFoodDtoListBytags);
-//
-//        // 임의의 데이터 삽입///////////////////////////////////////////////
-//        busanFoodDto = new BusanFoodDto();
-//        busanFoodDto.setMainTitle("해운대포장마차존");
-//        busanFoodDto.setSubTitle("낭만 추억 만들어 주는 해운대 포장마차");
-//        Resources resources = this.getResources();
-//        //busanFoodDto.setImg(BitmapFactory.decodeResource(resources, R.drawable.haeundae));
-//        // Glide로 이미지 표시하기
-//        String imageUrl = "https://www.visitbusan.net/uploadImgs/files/cntnts/20191230180157336_ttiel";
-//        busanFoodDto.setImg(imageUrl);
-//
-//        busanFoodDto.setPlace("해운대포장마차촌");
-//        busanFoodDto.setTag1("#바다");
-//        busanFoodDto.setTag2("#술");
-//        busanFoodDto.setTag3("#낭만");
-//        FoodList.add(busanFoodDto);
-//        FoodList.add(busanFoodDto);
-//        FoodList.add(busanFoodDto);
-//        FoodList.add(busanFoodDto);
-//        ///////////////////////////////////////////////////////////////
-
-         //임의의 데이터 삽입///////////////////////////////////////////////
-        busanFoodDto = new BusanFoodDto();
-        busanFoodDto.setMainTitle("11해운대포장마차존");
-        busanFoodDto.setSubTitle("11낭만 추억 만들어 주는 해운대 포장마차");
-        Resources resources = this.getResources();
-        //busanFoodDto.setImg(BitmapFactory.decodeResource(resources, R.drawable.haeundae));
-        // Glide로 이미지 표시하기
-        String imageUrl = "https://www.visitbusan.net/uploadImgs/files/cntnts/20191230180157336_ttiel";
-        busanFoodDto.setImg(imageUrl);
-        busanFoodDto.setContext("sdfskjdgklsjgkjflglfkjglkdfjgkl 기타등등");
-        busanFoodDto.setPlace("11해운대포장마차촌");
-        busanFoodDto.setTag1("#바다");
-        busanFoodDto.setTag2("#술");
-        busanFoodDto.setTag3("#낭만");
-        busanFoodDto.setCall("01054924543");
-        busanFoodDtoListBytags.add(busanFoodDto);
-        busanFoodDtoListBytags.add(busanFoodDto);
-        busanFoodDtoListBytags.add(busanFoodDto);
-        busanFoodDtoListBytags.add(busanFoodDto);
-
-
-        //리스트뷰에 Adapter 설정
-        listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -421,11 +374,17 @@ public class BusanFoodStep1 extends AppCompatActivity {
     //tag 클릭할 때마다 busanFoodDtoListBytags 다시 업데이트 해줘야 하니까 이렇게 함수 선언함
     public void busanFoodByTags(ArrayList<String> tags){
         //DB에서 데이터 불러오기
-        busanFoodDtoListBytags = dBconnect.getFoodListByTags(tags,getApplicationContext());
-        for(int i=0; i<busanFoodDtoListBytags.size();i++){
-            System.out.println("데이터 사용 !!!"+busanFoodDtoListBytags.get(i).getMainTitle());
+        ArrayList<BusanFoodDto> busanFoodDtoListBytags = new ArrayList<>();
+        ArrayList<BusanFoodDto> dbList = dBconnect.getFoodListByTags(tags,getApplicationContext());
+        for(int i=0; i<dbList.size();i++){
+            busanFoodDtoListBytags.add(dbList.get(i));
         }
-        adapter.notifyDataSetChanged();
+
+        adapter = new ListViewAdapter(this, busanFoodDtoListBytags);
+
+
+        //리스트뷰에 Adapter 설정
+        listView.setAdapter(adapter);
     }
 
 
