@@ -41,19 +41,19 @@ public class BusanFestivalStep1 extends AppCompatActivity {
         busanFestivalDto = new BusanFestivalDto();
 
 
-        busanFestivalDto.setMainTitle("부산불꽃축제");
-        busanFestivalDto.setSubTitle("아름다운 부산 밤하늘의 하모니, 부산불꽃축제");
-        // Glide로 이미지 표시하기
-        String imageUrl = "https://www.visitbusan.net/uploadImgs/files/cntnts/20191230180157336_ttiel";
-        busanFestivalDto.setImg(imageUrl);
-
-        busanFestivalDto.setPlace("부산 수영구 광안해변로 219");
-        busanFestivalDto.setDate("매년 11월 불꽃쇼 20:00 ~ 21:00");
-        festivalList.add(busanFestivalDto);
-        festivalList.add(busanFestivalDto);
-        festivalList.add(busanFestivalDto);
-        festivalList.add(busanFestivalDto);
-        ///////////////////////////////////////////////////////////////
+//        busanFestivalDto.setMainTitle("부산불꽃축제");
+//        busanFestivalDto.setSubTitle("아름다운 부산 밤하늘의 하모니, 부산불꽃축제");
+//        // Glide로 이미지 표시하기
+//        String imageUrl = "https://www.visitbusan.net/uploadImgs/files/cntnts/20191230180157336_ttiel";
+//        busanFestivalDto.setImg(imageUrl);
+//
+//        busanFestivalDto.setPlace("부산 수영구 광안해변로 219");
+//        busanFestivalDto.setDate("매년 11월 불꽃쇼 20:00 ~ 21:00");
+//        festivalList.add(busanFestivalDto);
+//        festivalList.add(busanFestivalDto);
+//        festivalList.add(busanFestivalDto);
+//        festivalList.add(busanFestivalDto);
+//        ///////////////////////////////////////////////////////////////
 
 
         //리스트뷰에 Adapter 설정
