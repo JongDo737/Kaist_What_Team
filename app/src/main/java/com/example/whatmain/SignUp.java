@@ -3,9 +3,11 @@ package com.example.whatmain;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -13,6 +15,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -34,7 +37,7 @@ public class SignUp extends AppCompatActivity {
 
     DatePickerDialog datePickerDialog;
     NowDate nowDate = new NowDate();
-
+    DBconnect dBconnect = new DBconnect();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,29 +105,37 @@ public class SignUp extends AppCompatActivity {
         commitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UserDto userDto = new UserDto();
-                userDto.setUsername(signUpUsername.getText().toString());
-                userDto.setPassword(signupPW.getText().toString());
-                userDto.setBirth(birthText.getText().toString());
-                userDto.setCreate_date(nowDate.getDate());
-                userDto.setUpdate_date(nowDate.getDate());
-                if (checkMale.isChecked()) {
-                    userDto.setGender("male");
-                } else if(checkFemale.isChecked()){
-                    userDto.setGender("female");
+                if(signUpUsername.getText().toString() != "" && signupPW.getText().toString() != null){
+                    if(signupPW.getText().toString() != "" && signupPW.getText().toString() != null){
+                        if(birthText.getText().toString() != "" && birthText.getText().toString() != null){
+                            UserDto userDto = new UserDto();
+                            userDto.setUsername(signUpUsername.getText().toString());
+                            userDto.setPassword(signupPW.getText().toString());
+                            userDto.setBirth(birthText.getText().toString());
+                            userDto.setCreate_date(nowDate.getDate());
+                            userDto.setUpdate_date(nowDate.getDate());
+                            if (checkMale.isChecked()) {
+                                userDto.setGender("male");
+                            } else if(checkFemale.isChecked()){
+                                userDto.setGender("female");
+                            }
+                            //회원가입 DB에 넣기
+                            dBconnect.insertUser(userDto, getApplicationContext());
+                            //회원가입 완료 후 다시 로그인 창
+                            Intent intent = new Intent(getApplicationContext(),Login.class);
+                            startActivity(intent);
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext(), "생일을 입력해주세요 !", Toast.LENGTH_SHORT).show();
+                        }
+                    }else {
+                        Toast.makeText(getApplicationContext(), "비밀번호를 입력해주세요 !", Toast.LENGTH_SHORT).show();
+                    }
+
+                }else {
+                    Toast.makeText(getApplicationContext(), "아이디를 입력해주세요 !", Toast.LENGTH_SHORT).show();
                 }
-                System.out.println(userDto.getUsername());
-                System.out.println(userDto.getPassword());
-                System.out.println(userDto.getBirth());
-                System.out.println(userDto.getGender());
-                System.out.println(userDto.getCreate_date());
-                System.out.println(userDto.getUpdate_date());
-                //회원가입 DB에 넣기
-                DBconnect dBconnect = new DBconnect();
-                dBconnect.insertUser(userDto);
-                //회원가입 완료 후 다시 로그인 창
-                Intent intent = new Intent(getApplicationContext(),Login.class);
-                startActivity(intent);
+
             }
         });
 

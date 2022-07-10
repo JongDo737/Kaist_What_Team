@@ -9,7 +9,7 @@ public class NowDate {
         LocalDate now = LocalDate.now();
 
         // 포맷 정의
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
         // 포맷 적용
         String formatedNow = now.format(formatter);

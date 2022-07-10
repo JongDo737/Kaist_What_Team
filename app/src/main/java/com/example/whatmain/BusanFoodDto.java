@@ -73,4 +73,6 @@ public class BusanFoodDto {
     public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
+
+
 }
