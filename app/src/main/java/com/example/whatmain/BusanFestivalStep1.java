@@ -4,9 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,10 +25,11 @@ public class BusanFestivalStep1 extends AppCompatActivity implements Serializabl
 
     ListView listView;
     BusanFestivalStep1.ListViewAdapter adapter = null;
-    ArrayList<BusanFestivalDto> festivalList = new ArrayList<>();
+    //ArrayList<BusanFestivalDto> festivalList = new ArrayList<>();
+    ArrayList<BusanFestivalDto> busanFestivalDtoList = new ArrayList<>();
 
     BusanFestivalDto busanFestivalDto;
-
+    DBconnectImpl dBconnect;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,24 +37,28 @@ public class BusanFestivalStep1 extends AppCompatActivity implements Serializabl
         setContentView(R.layout.activity_busan_festival_step1);
 
         listView = (ListView) findViewById(R.id.listView);
-        adapter = new BusanFestivalStep1.ListViewAdapter(this, festivalList);
+        adapter = new BusanFestivalStep1.ListViewAdapter(this, busanFestivalDtoList);
 // 임의의 데이터 삽입///////////////////////////////////////////////
         busanFestivalDto = new BusanFestivalDto();
+        //밑에 줄 주석 풀어야 함 ****************
+        busanFestivalDtoList= dBconnect.getAllFestival(getApplicationContext());
 
+        busanFestivalDto.setMainTitle("부산불꽃축제");
+        busanFestivalDto.setSubTitle("아름다운 부산 밤하늘의 하모니, 부산불꽃축제");
+        // Glide로 이미지 표시하기
+        String imageUrl = "https://www.visitbusan.net/uploadImgs/files/cntnts/20191230180157336_ttiel";
+        busanFestivalDto.setImg(imageUrl);
 
-//        busanFestivalDto.setMainTitle("부산불꽃축제");
-//        busanFestivalDto.setSubTitle("아름다운 부산 밤하늘의 하모니, 부산불꽃축제");
-//        // Glide로 이미지 표시하기
-//        String imageUrl = "https://www.visitbusan.net/uploadImgs/files/cntnts/20191230180157336_ttiel";
-//        busanFestivalDto.setImg(imageUrl);
-//
-//        busanFestivalDto.setPlace("부산 수영구 광안해변로 219");
-//        busanFestivalDto.setDate("매년 11월 불꽃쇼 20:00 ~ 21:00");
-//        festivalList.add(busanFestivalDto);
-//        festivalList.add(busanFestivalDto);
-//        festivalList.add(busanFestivalDto);
-//        festivalList.add(busanFestivalDto);
-//        ///////////////////////////////////////////////////////////////
+        busanFestivalDto.setPlace("부산 수영구 광안해변로 219");
+        busanFestivalDto.setDate("매년 11월 불꽃쇼 20:00 ~ 21:00");
+        busanFestivalDto.setCall("01087764535");
+        busanFestivalDto.setContext("fdsfsadgsgewwegagad 기타기타");
+        busanFestivalDto.setHomePage("http://www.bfo.or.kr");
+        busanFestivalDtoList.add(busanFestivalDto);
+        busanFestivalDtoList.add(busanFestivalDto);
+        busanFestivalDtoList.add(busanFestivalDto);
+        busanFestivalDtoList.add(busanFestivalDto);
+        ///////////////////////////////////////////////////////////////
 
 
         //리스트뷰에 Adapter 설정
@@ -65,15 +69,17 @@ public class BusanFestivalStep1 extends AppCompatActivity implements Serializabl
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // position 값이랑 Dto 넘겨주기
                 System.out.println("리스트뷰 클릭: festival !!!!!!!!"+position);
-                Intent intent = new Intent(getApplicationContext(), FullImage.class);
-                intent.putExtra("position",Integer.toString(position));
-                intent.putExtra("festivalList",festivalList);
+                Intent intent = new Intent(getApplicationContext(), FestivalFullImage.class);
+                //intent.putExtra("position",Integer.toString(position));
+                System.out.println(busanFestivalDtoList.get(position).getCall()+" festival 여기에요 여기 !!");
+                intent.putExtra("Dto", busanFestivalDtoList.get(position));
+                //.getMainTitle();
                 startActivity(intent);
             }
         });
-
-
     }
+
+
 
     /* 리스트뷰 어댑터 */
     public class ListViewAdapter extends BaseAdapter {
@@ -118,23 +124,23 @@ public class BusanFestivalStep1 extends AppCompatActivity implements Serializabl
                 View view = new View(context);
                 view = (View) convertView;
             }
+
             ImageView mainImg = (ImageView) convertView.findViewById(R.id.mainImg);
             //Glide.with(getApplicationContext()).load(busanFestivalDto.getImg()).into(mainImg);
 
             TextView mainTitle = (TextView) convertView.findViewById(R.id.mainTitle);
             TextView title = (TextView) convertView.findViewById(R.id.title);
-            TextView place = (TextView) convertView.findViewById(R.id.mainContext);
             TextView date = (TextView) convertView.findViewById(R.id.date);
+            TextView place = (TextView) convertView.findViewById(R.id.mainContext);
 
-            ImageView heartClick = (ImageView) convertView.findViewById(R.id.heartClick);
+            //ImageView heartClick = (ImageView) convertView.findViewById(R.id.heartClick);
 
             //mainImg.setImage(busanFestivalDto.getImg());
             Glide.with(getApplicationContext()).load(busanFestivalDto.getImg()).into(mainImg);
             mainTitle.setText(busanFestivalDto.getMainTitle());
-            place.setText(busanFestivalDto.getPlace());
             title.setText(busanFestivalDto.getSubTitle());
-
             date.setText(busanFestivalDto.getDate());
+            place.setText(busanFestivalDto.getPlace());
 
             //각 아이템 선택 event
 //            convertView.setOnClickListener(new View.OnClickListener() {
@@ -143,12 +149,12 @@ public class BusanFestivalStep1 extends AppCompatActivity implements Serializabl
 //                    Toast.makeText(context, busanFoodDto.getMainTitle(),Toast.LENGTH_SHORT).show();
 //                }
 //            });
-            heartClick.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    heartClick.setImageResource(R.drawable.redheart);
-                }
-            });
+//            heartClick.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    heartClick.setImageResource(R.drawable.redheart);
+//                }
+//            });
 
             return convertView;  //뷰 객체 반환
         }

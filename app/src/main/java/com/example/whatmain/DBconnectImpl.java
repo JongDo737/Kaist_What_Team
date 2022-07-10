@@ -16,7 +16,5 @@ public interface DBconnectImpl {
 
     // 축제
     //모든 축제 정보 받아오기
-    public ArrayList<BusanFestivalDto> getAllFestival();
-
-
+    public ArrayList<BusanFestivalDto> getAllFestival(Context test);
 }

@@ -200,15 +200,7 @@ public class DBconnect extends AppCompatActivity implements DBconnectImpl{
 
 
     @Override
-    public ArrayList<BusanFestivalDto> getAllFestival() {
-
-
-
-
-
-
-
-
+    public ArrayList<BusanFestivalDto> getAllFestival(Context test) {
         return null;
     }
 

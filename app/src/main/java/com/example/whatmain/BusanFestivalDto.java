@@ -2,7 +2,9 @@ package com.example.whatmain;
 
 import android.graphics.Bitmap;
 
-public class BusanFestivalDto {
+import java.io.Serializable;
+
+public class BusanFestivalDto implements Serializable {
     String mainTitle ;
     String place;
     String subTitle;
@@ -10,8 +12,20 @@ public class BusanFestivalDto {
     String context;
     double latitude;
     double longitude;
+    //food엔 없고 festival에는 있음
     String homePage;
     String date;
+
+    //Call 추가
+    String call;
+
+    public String getCall() {
+        return call;
+    }
+
+    public void setCall(String call) {
+        this.call = call;
+    }
 
     public double getLatitude() {
         return latitude;
