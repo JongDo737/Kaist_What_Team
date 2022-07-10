@@ -424,7 +424,7 @@ public class BusanFoodStep1 extends AppCompatActivity {
     }
     public void busanFoodByTags(ArrayList<String> tags){
         //DB에서 데이터 불러오기
-        busanFoodDtoListBytags = dBconnect.getFoodListByTags(tags);
+        busanFoodDtoListBytags = dBconnect.getFoodListByTags(tags,getApplicationContext());
         adapter.notifyDataSetChanged();
     }
 

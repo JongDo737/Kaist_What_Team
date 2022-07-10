@@ -2,7 +2,9 @@ package com.example.whatmain;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +23,7 @@ public class Login extends AppCompatActivity {
     LinearLayout naverBtn;
     LinearLayout kakaoBtn;
 
+    DBconnectImpl dBconnect = new DBconnect();
 
 
     @Override
@@ -41,12 +44,21 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 String username = et_id.getText().toString();
                 String password = et_password.getText().toString();
-                if(isEmpty(username, password) && login(username, password)){
-                    System.out.println(et_id.getText().toString()+"여기여기여기여기"+ et_password.getText().toString());
+                if(isEmpty(username, password) && login(username, password,Login.this)){
+                    if(login(username,password,getApplicationContext())){
+                        Intent intent = new Intent(getApplicationContext(), FirstPage.class);
+                        startActivity(intent);
+                    }
+                    else{
+                        System.out.println("로그인 실패 !!!!!!!!!!!!!!!!!!!!");
+                    }
+
                 }
                 System.out.println(et_id.getText().toString()+"여기여기여기여기"+ et_password.getText().toString());
-                Intent intent = new Intent(getApplicationContext(), FirstPage.class);
-                startActivity(intent);
+
+
+//                Intent intent = new Intent(getApplicationContext(), FirstPage.class);
+//                startActivity(intent);
             }
         });
         // 회원가입 버튼
@@ -83,10 +95,25 @@ public class Login extends AppCompatActivity {
     }
 
     // 회원체크
-    public boolean login(String username, String password){
+    public boolean login(String username, String password, Context context){
+        //아이디 비밀번호 체크
+        boolean check = false;
+        int loginCode = dBconnect.requestLogin(username, password, context);
+        System.out.println(loginCode+"다시 로그인창");
+        if(loginCode == 1) {
+            check = true;
 
-
-        return true;
+            Toast.makeText(getApplicationContext(),"로그인 성공했습니다.",Toast.LENGTH_SHORT).show();
+        }
+        else if(loginCode == 2) {
+            Toast.makeText(getApplicationContext(),"아이디가 틀렸습니다.",Toast.LENGTH_SHORT).show();
+            check = false;
+        }
+        else if(loginCode == 3) {
+            Toast.makeText(getApplicationContext(),"비밀번호가 틀렸습니다.",Toast.LENGTH_SHORT).show();
+            check = false;
+        }
+        return check;
     }
 
 
