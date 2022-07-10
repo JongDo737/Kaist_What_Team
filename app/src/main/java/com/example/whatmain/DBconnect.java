@@ -34,8 +34,9 @@ public class DBconnect extends AppCompatActivity implements DBconnectImpl{
     String ID;
     String PW;
     String localhost = "https://838e-192-249-18-216.jp.ngrok.io";
-
+    ArrayList<BusanFoodDto> foodList = new ArrayList<>();
     int loginCode = 0;
+    BusanFoodDto busanFoodDto;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -145,6 +146,7 @@ public class DBconnect extends AppCompatActivity implements DBconnectImpl{
     // 태그로 음식 정보 받아오기
     @Override
     public ArrayList<BusanFoodDto> getFoodListByTags(ArrayList<String> tags, Context test){
+
         String url = localhost + "/getFoodByTags";
 
         //JSON형식으로 데이터 통신을 진행합니다!
@@ -153,7 +155,7 @@ public class DBconnect extends AppCompatActivity implements DBconnectImpl{
             for(int i=0; i<tags.size(); i++){
                 testjson.put("tag"+(i+1) ,tags.get(i));
             }
-            testjson.put("count", tags.size());
+            testjson.put("count", tags.size()+"");
 
             String jsonString = testjson.toString(); //완성된 json 포맷
             System.out.println("11111111111111111");
@@ -161,21 +163,20 @@ public class DBconnect extends AppCompatActivity implements DBconnectImpl{
             System.out.println(testjson);
             //이제 전송해볼까요?
             final RequestQueue requestQueue = Volley.newRequestQueue(test);
-            final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, testjson, new Response.Listener<JSONObject>() {
+
+            final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, testjson, new Response.Listener<JSONObject>() {
 
                 //데이터 전달을 끝내고 이제 그 응답을 받을 차례입니다.
                 @Override
                 public void onResponse(JSONObject response) {
                     try {
                         //받은 json형식의 응답을 받아
-                        JSONArray jsonArray = new JSONArray()
-                        JSONObject jsonObject = new JSONObject(response.toString());
 
-                        Toast.makeText(getApplicationContext(), "로그인 성공", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(), SignUp.class);
-                        startActivity(intent);
-                        finish();
-
+                        JSONObject jsonObj_1 = new JSONObject(response.toString());
+                        System.out.println("jsonObj_1 : "+jsonObj_1);
+                        String jsonData = jsonObj_1.getString("body");
+                        System.out.println("jsonData : "+jsonData);
+                        foodList = jsonParse(jsonData);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -189,12 +190,14 @@ public class DBconnect extends AppCompatActivity implements DBconnectImpl{
             });
             jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
             requestQueue.add(jsonObjectRequest);
-
-        } catch (JSONException e) {
+        }  catch (JSONException e) {
             e.printStackTrace();
         }
-        return null;
+    return foodList;
     }
+
+
+
 
     @Override
     public ArrayList<BusanFestivalDto> getAllFestival() {
@@ -204,9 +207,42 @@ public class DBconnect extends AppCompatActivity implements DBconnectImpl{
     void easyToast(String str){
         Toast.makeText(getApplicationContext(),str,Toast.LENGTH_SHORT).show();
     }
+    public ArrayList<BusanFoodDto> jsonParse(String jsonStr) throws JSONException {
 
+        JSONArray jsonArray = new JSONArray(jsonStr);
+        ArrayList<BusanFoodDto> foodListS = new ArrayList<>();
+        System.out.println(jsonArray.length()+"wlfmawflawflawnfkawlnfawklfnawkflanfakl");
+        for(int i=0; i<jsonArray.length();i++){
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+            System.out.println(i+"번째"+(String)jsonObject.get("mainTitle"));
 
+            busanFoodDto = new BusanFoodDto();
+            busanFoodDto.setMainTitle((String)jsonObject.get("mainTitle"));
+            busanFoodDto.setPlace((String)jsonObject.get("place"));
+            busanFoodDto.setSubTitle((String)jsonObject.get("subTitle"));
+            busanFoodDto.setImg((String)jsonObject.get("img"));
+            busanFoodDto.setContext((String)jsonObject.get("context"));
+            busanFoodDto.setCall((String)jsonObject.get("call"));
 
+            //태그 작업
+            String tags = (String)jsonObject.get("tag1");
+            String[] arrTags = tags.split(" ");
+            if(arrTags.length==1){
+                busanFoodDto.setTag1(arrTags[0]);
+            }else if(arrTags.length==2){
+                busanFoodDto.setTag1(arrTags[0]);
+                busanFoodDto.setTag2(arrTags[1]);
+            }
+            else if(arrTags.length==3){
+                busanFoodDto.setTag1(arrTags[0]);
+                busanFoodDto.setTag2(arrTags[1]);
+                busanFoodDto.setTag3(arrTags[2]);
+            }
+            foodListS.add(busanFoodDto);
+        }
 
+        return foodListS;
+
+    }
 
 }

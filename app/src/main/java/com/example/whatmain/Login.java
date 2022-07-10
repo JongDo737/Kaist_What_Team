@@ -44,16 +44,17 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 String username = et_id.getText().toString();
                 String password = et_password.getText().toString();
-                if(isEmpty(username, password) && login(username, password,Login.this)){
-                    if(login(username,password,getApplicationContext())){
-                        Intent intent = new Intent(getApplicationContext(), FirstPage.class);
-                        startActivity(intent);
-                    }
-                    else{
-                        System.out.println("로그인 실패 !!!!!!!!!!!!!!!!!!!!");
-                    }
-
-                }
+                Intent intent = new Intent(getApplicationContext(), FirstPage.class);
+                startActivity(intent);
+//                if(isEmpty(username, password) && login(username, password,Login.this)){
+//                    if(login(username,password,getApplicationContext())){
+//
+//                    }
+//                    else{
+//                        System.out.println("로그인 실패 !!!!!!!!!!!!!!!!!!!!");
+//                    }
+//
+//                }
                 System.out.println(et_id.getText().toString()+"여기여기여기여기"+ et_password.getText().toString());
 
 

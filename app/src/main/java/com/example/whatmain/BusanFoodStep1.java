@@ -48,7 +48,7 @@ public class BusanFoodStep1 extends AppCompatActivity {
     ArrayList<BusanFoodDto> busanFoodDtoListBytags = new ArrayList<>();
 
     BusanFoodDto busanFoodDto;
-    DBconnectImpl dBconnect;
+    DBconnectImpl dBconnect = new DBconnect();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -425,6 +425,9 @@ public class BusanFoodStep1 extends AppCompatActivity {
     public void busanFoodByTags(ArrayList<String> tags){
         //DB에서 데이터 불러오기
         busanFoodDtoListBytags = dBconnect.getFoodListByTags(tags,getApplicationContext());
+        for(int i=0; i<busanFoodDtoListBytags.size();i++){
+            System.out.println("데이터 사용 !!!"+busanFoodDtoListBytags.get(i).getMainTitle());
+        }
         adapter.notifyDataSetChanged();
     }
 
@@ -499,12 +502,12 @@ public class BusanFoodStep1 extends AppCompatActivity {
 //                    Toast.makeText(context, busanFoodDto.getMainTitle(),Toast.LENGTH_SHORT).show();
 //                }
 //            });
-            heartClick.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    heartClick.setImageResource(R.drawable.redheart);
-                }
-            });
+//            heartClick.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    heartClick.setImageResource(R.drawable.redheart);
+//                }
+//            });
 
             return convertView;  //뷰 객체 반환
         }
