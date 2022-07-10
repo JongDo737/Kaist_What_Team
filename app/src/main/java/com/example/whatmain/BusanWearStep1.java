@@ -6,18 +6,14 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.nfc.Tag;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -96,7 +92,7 @@ public class BusanWearStep1 extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // position 값이랑 Dto 넘겨주기
                 System.out.println("리스트뷰 클릭: wear !!!!!!!!"+position);
-                Intent intent = new Intent(getApplicationContext(), FullImage.class);
+                Intent intent = new Intent(getApplicationContext(), FoodFullImage.class);
                 intent.putExtra("position",Integer.toString(position));
                 intent.putExtra("festivalList",WearList);
                 startActivity(intent);

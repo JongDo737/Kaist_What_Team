@@ -6,18 +6,14 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.nfc.Tag;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -118,7 +114,7 @@ public class BusanFoodStep1 extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // position 값이랑 Dto 넘겨주기
                 System.out.println("리스트뷰 클릭: food !!!!!!!!"+position);
-                Intent intent = new Intent(getApplicationContext(), FullImage.class);
+                Intent intent = new Intent(getApplicationContext(), FoodFullImage.class);
                 //intent.putExtra("position",Integer.toString(position));
                 System.out.println(busanFoodDtoListBytags.get(position).getCall()+"여기에요 여기 !!");
                 intent.putExtra("Dto",busanFoodDtoListBytags.get(position));
@@ -422,6 +418,7 @@ public class BusanFoodStep1 extends AppCompatActivity {
         }
         busanFoodByTags(tags);
     }
+    //tag 클릭할 때마다 busanFoodDtoListBytags 다시 업데이트 해줘야 하니까 이렇게 함수 선언함
     public void busanFoodByTags(ArrayList<String> tags){
         //DB에서 데이터 불러오기
         busanFoodDtoListBytags = dBconnect.getFoodListByTags(tags,getApplicationContext());
@@ -499,12 +496,13 @@ public class BusanFoodStep1 extends AppCompatActivity {
 //                    Toast.makeText(context, busanFoodDto.getMainTitle(),Toast.LENGTH_SHORT).show();
 //                }
 //            });
-            heartClick.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    heartClick.setImageResource(R.drawable.redheart);
-                }
-            });
+
+//            heartClick.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    heartClick.setImageResource(R.drawable.redheart);
+//                }
+//            });
 
             return convertView;  //뷰 객체 반환
         }

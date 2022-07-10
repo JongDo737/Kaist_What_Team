@@ -4,15 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Paint;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,9 +22,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
-public class FullImage extends AppCompatActivity implements OnMapReadyCallback, Serializable {
+public class FoodFullImage extends AppCompatActivity implements OnMapReadyCallback, Serializable {
 
     private GoogleMap mMap;
     Button button;
@@ -35,11 +31,15 @@ public class FullImage extends AppCompatActivity implements OnMapReadyCallback, 
     double foodLatitude;
     double foodLongitude;
     BusanFoodDto get_foodDto;
+    String foodUserName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_full_image);
+        setContentView(R.layout.activity_food_full_image);
+
+        //userName 하드코딩된 거 바꿔야 함 ***********************
+        foodUserName="지나";
 
         TextView foodMainTitle=(TextView) findViewById(R.id.foodMainTitle);
         TextView foodPlace1=(TextView) findViewById(R.id.foodPlace1);
@@ -47,7 +47,6 @@ public class FullImage extends AppCompatActivity implements OnMapReadyCallback, 
         TextView foodSubTitle=(TextView) findViewById(R.id.foodSubTitle);
         TextView foodContext=(TextView) findViewById(R.id.foodContext);
         TextView foodPlace2=(TextView) findViewById(R.id.foodPlace2);
-
 
 
 
@@ -64,7 +63,7 @@ public class FullImage extends AppCompatActivity implements OnMapReadyCallback, 
         foodContext.setText(get_foodDto.getContext());
         foodPlace2.setText(get_foodDto.getPlace());
 
-        //Map 해주기 !!!!!! latitude, longitude
+        //Map 해주기 latitude, longitude
         foodLatitude=get_foodDto.getLatitude();
         foodLongitude=get_foodDto.getLongitude();
 
@@ -98,8 +97,9 @@ public class FullImage extends AppCompatActivity implements OnMapReadyCallback, 
             @Override
             public void onClick(View v) {
                 heartsave.setImageResource(R.drawable.redheart);
-                // userid 저장 누른 항목 리스트에 추가하기*****************************
-                
+                // userName 저장 누른 항목 리스트에 추가하기 *****************************
+                //userid랑 선택 리스트값
+
             }
         });
         ImageView foodCalendar=(ImageView) findViewById(R.id.foodCalendar);
@@ -116,7 +116,7 @@ public class FullImage extends AppCompatActivity implements OnMapReadyCallback, 
         foodCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"Phone: "+get_foodDto.getCall(),Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(),"Phone: "+get_foodDto.getCall(),Toast.LENGTH_LONG).show();
                 //전화걸기
                 if(get_foodDto.getCall()==null || get_foodDto.getCall()=="") {
                     //전화번호 없으면 Toast 띄우기
@@ -128,7 +128,22 @@ public class FullImage extends AppCompatActivity implements OnMapReadyCallback, 
                 }
             }
         });
-        //공유하기는 보류 !!!!! 작성해야 함!!
+        //문자로 네이버 링크 공유하기
+        ImageView foodSend=(ImageView)findViewById(R.id.foodSend);
+        foodSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //String tel="smsto:"+"01000000000";
+                //startActivity(new Intent("android.intent.action.DIAL", Uri.parse(tel)));
+                String message;
+                Intent smsIntent = new Intent(Intent.ACTION_VIEW);
+                smsIntent.setType("vnd.android-dir/mms-sms");
+                //smsIntent.putExtra("address", find_phone);
+                message="https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query="+get_foodDto.getMainTitle();
+                smsIntent.putExtra("sms_body",message);
+                startActivity(smsIntent);
+            }
+        });
 
     }
 

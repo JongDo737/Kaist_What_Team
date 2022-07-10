@@ -15,4 +15,7 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+    <style name="UrlLinkAccent">
+        <item name="colorAccent">#1b73e8</item>
+    </style>
 </resources>

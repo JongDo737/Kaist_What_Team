@@ -168,7 +168,7 @@ public class DBconnect extends AppCompatActivity implements DBconnectImpl{
                 public void onResponse(JSONObject response) {
                     try {
                         //받은 json형식의 응답을 받아
-                        JSONArray jsonArray = new JSONArray()
+                        JSONArray jsonArray = new JSONArray();
                         JSONObject jsonObject = new JSONObject(response.toString());
 
                         Toast.makeText(getApplicationContext(), "로그인 성공", Toast.LENGTH_SHORT).show();
@@ -197,7 +197,7 @@ public class DBconnect extends AppCompatActivity implements DBconnectImpl{
     }
 
     @Override
-    public ArrayList<BusanFestivalDto> getAllFestival() {
+    public ArrayList<BusanFestivalDto> getAllFestival(Context test) {
         return null;
     }
 

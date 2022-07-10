@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.DIAL_PHONE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -16,6 +17,9 @@
         android:theme="@style/Theme.WhatMain"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".FestivalFullImage"
+            android:exported="false" />
         <activity
             android:name=".BusanWearStep1"
             android:exported="false" />
@@ -37,7 +41,7 @@
             android:value="AIzaSyCaBPji8eBJIEMgHedj3i2TgmcV9INUJvk" />
 
         <activity
-            android:name=".FullImage"
+            android:name=".FoodFullImage"
             android:exported="false" />
         <activity
             android:name=".BusanFoodStep1"

@@ -31,7 +31,7 @@ public class FirstPage extends AppCompatActivity {
 
         TextView firstPageUserName=(TextView) findViewById(R.id.firstPageUserName);
 
-        //로그인 시 username 변경 **********************
+        //로그인 시 username 변경해야 함 **********************
         String username="지나";
         firstPageUserName.setText(username+"님 안녕하세요!");
 
