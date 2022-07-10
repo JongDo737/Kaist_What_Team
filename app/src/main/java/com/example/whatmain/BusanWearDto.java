@@ -4,10 +4,11 @@ import android.graphics.Bitmap;
 
 import java.io.Serializable;
 
-public class BusanFoodDto implements Serializable {
+public class BusanWearDto implements Serializable {
     String mainTitle ;
     String place;
     String subTitle;
+    String shortContext;
     String img;
     String context;
     String tag1;
@@ -32,6 +33,12 @@ public class BusanFoodDto implements Serializable {
     }
     public void setSubTitle(String subTitle) {
         this.subTitle = subTitle;
+    }
+    public String getShortContext() {
+        return shortContext;
+    }
+    public void setShortContext(String shortContext) {
+        this.shortContext = shortContext;
     }
     public String getImg() {
         return img;

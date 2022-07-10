@@ -6,11 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -18,7 +20,10 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class FullImage extends AppCompatActivity implements OnMapReadyCallback {
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public class FullImage extends AppCompatActivity implements OnMapReadyCallback, Serializable {
 
     private GoogleMap mMap;
     Button button;
@@ -27,8 +32,18 @@ public class FullImage extends AppCompatActivity implements OnMapReadyCallback {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_full_image);
 
-        ImageView img=(ImageView) findViewById(R.id.fullImg);
-        //img.set
+//        ImageView img=(ImageView) findViewById(R.id.fullImg);
+//        Intent i=getIntent();
+//
+//        int position=i.getExtras().getInt("position");
+//        Log.v("fullImage.java:", Integer.toString(position));
+//
+//        //ArrayList<BusanFestivalDto> festivalList=i.getExtras().getParcelableArrayList("festivalList");
+//        ArrayList<BusanFestivalDto> festivalList=(ArrayList<BusanFestivalDto>) i.getSerializableExtra("festivalList");
+//
+//
+//        Glide.with(getApplicationContext()).load(festivalList.get(position).getImg()).into(img);
+
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -43,6 +58,13 @@ public class FullImage extends AppCompatActivity implements OnMapReadyCallback {
             }
         });
 
+//        ImageView heartsave=findViewById(R.id.heartSave);
+//        heartsave.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                heartsave.setImageResource(R.drawable.redheart);
+//            }
+//        });
 
     }
 

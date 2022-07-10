@@ -19,9 +19,10 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class BusanFestivalStep1 extends AppCompatActivity {
+public class BusanFestivalStep1 extends AppCompatActivity implements Serializable {
 
     ListView listView;
     BusanFestivalStep1.ListViewAdapter adapter = null;
@@ -65,6 +66,8 @@ public class BusanFestivalStep1 extends AppCompatActivity {
                 // position 값이랑 Dto 넘겨주기
                 System.out.println("리스트뷰 클릭: festival !!!!!!!!"+position);
                 Intent intent = new Intent(getApplicationContext(), FullImage.class);
+                intent.putExtra("position",Integer.toString(position));
+                intent.putExtra("festivalList",festivalList);
                 startActivity(intent);
             }
         });

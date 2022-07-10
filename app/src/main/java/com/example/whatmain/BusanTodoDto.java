@@ -3,11 +3,12 @@ package com.example.whatmain;
 import android.graphics.Bitmap;
 
 import java.io.Serializable;
+public class BusanTodoDto implements Serializable{
 
-public class BusanFoodDto implements Serializable {
     String mainTitle ;
     String place;
     String subTitle;
+    String shortContext;
     String img;
     String context;
     String tag1;
@@ -32,6 +33,12 @@ public class BusanFoodDto implements Serializable {
     }
     public void setSubTitle(String subTitle) {
         this.subTitle = subTitle;
+    }
+    public String getShortContext() {
+        return shortContext;
+    }
+    public void setShortContext(String shortContext) {
+        this.shortContext = shortContext;
     }
     public String getImg() {
         return img;
