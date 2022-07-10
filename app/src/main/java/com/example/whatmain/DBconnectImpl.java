@@ -11,10 +11,9 @@ public interface DBconnectImpl {
     // 태그를 통해서 축제정보 받아오기
     public ArrayList<BusanFoodDto> getFoodListByTags(ArrayList<String> tags);
 
-
-
     // 축제
     //모든 축제 정보 받아오기
     public ArrayList<BusanFestivalDto> getAllFestival();
+
 
 }

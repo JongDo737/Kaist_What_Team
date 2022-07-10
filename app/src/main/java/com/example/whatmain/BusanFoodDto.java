@@ -15,6 +15,10 @@ public class BusanFoodDto implements Serializable {
     String tag3;
     double latitude;
     double longitude;
+    //전화 string 추가
+    String call;
+
+
     public String getMainTitle() {
         return mainTitle;
     }
@@ -75,4 +79,9 @@ public class BusanFoodDto implements Serializable {
     public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
+
+    //call 추가
+    public String getCall(){return call;}
+    public void setCall(String call){this.call=call;}
+
 }

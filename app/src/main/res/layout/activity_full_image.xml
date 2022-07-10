@@ -13,6 +13,7 @@
         android:orientation="vertical">
     
         <TextView
+            android:id="@+id/foodMainTitle"
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:text="해운대포장마차촌"
@@ -22,6 +23,7 @@
             android:layout_marginTop="30dp"
             ></TextView>
         <TextView
+            android:id="@+id/foodPlace1"
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:text="해운대포장마차거리"
@@ -29,7 +31,7 @@
             android:layout_marginTop="5dp">
         </TextView>
         <ImageView
-            android:id="@+id/fullImg"
+            android:id="@+id/foodFullImg"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:src="@drawable/haeundae"></ImageView>
@@ -60,6 +62,7 @@
                 android:layout_height="50dp"
                 android:orientation="vertical">
                 <ImageView
+                    android:id="@+id/foodCalendar"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
@@ -77,16 +80,17 @@
                 android:layout_height="50dp"
                 android:orientation="vertical">
                 <ImageView
+                    android:id="@+id/foodCall"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/star"></ImageView>
+                    android:src="@drawable/phone"></ImageView>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:textSize="10dp"
                     android:gravity="center"
-                    android:text="리뷰쓰기"></TextView>
+                    android:text="전화걸기"></TextView>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -109,6 +113,7 @@
 
         </LinearLayout>
         <TextView
+            android:id="@+id/foodSubTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
@@ -119,6 +124,7 @@
 
             android:textColor="#555555"></TextView>
         <TextView
+            android:id="@+id/foodContext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="해운대 해변을 따라 줄지어 자리한 포장마차가 눈에 들어온다. 저녁이 되면 거대한 마천루 아래 알록달록 불을 밝히는 해운대 포장마차는 그 분위기마저 낭만적이다.\n포차마다 구비된 수조에는 전복, 개불, 멍게, 소라 등 내로라하는 부산의 해산물들이 가득 담겨있다. 실제 해수를 사용해 신선도를 유지하니 해산물의 바다맛이 고스란히 전달된다.\n해운대 포장마차촌은 미식여행의 색다른 재미를 선사하는 곳이자, 투박하지만 정겨운 부산 사람의 인심을 담을 수 있는 곳이기도 하다."
@@ -147,11 +153,12 @@
                 android:textStyle="bold"
                 android:textColor="@color/black"></TextView>
             <TextView
+                android:id="@+id/foodPlace2"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:layout_marginLeft="10dp"
-                android:text="부산광역시 해운대구 해운대해변로 236"
+                android:text="해운대포장마차거리"
                 android:textStyle="bold"></TextView>
         </LinearLayout>
         <androidx.appcompat.widget.AppCompatButton

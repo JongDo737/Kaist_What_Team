@@ -44,7 +44,7 @@ public class BusanFoodStep1 extends AppCompatActivity {
     ListViewAdapter adapter = null;
     boolean clickCheck[]= new boolean[11];
     ArrayList<String> tags = new ArrayList<>();
-    ArrayList<BusanFoodDto> FoodList = new ArrayList<>();
+    //ArrayList<BusanFoodDto> FoodList = new ArrayList<>();
     ArrayList<BusanFoodDto> busanFoodDtoListBytags = new ArrayList<>();
 
     BusanFoodDto busanFoodDto;
@@ -89,6 +89,26 @@ public class BusanFoodStep1 extends AppCompatActivity {
 //        FoodList.add(busanFoodDto);
 //        ///////////////////////////////////////////////////////////////
 
+         //임의의 데이터 삽입///////////////////////////////////////////////
+        busanFoodDto = new BusanFoodDto();
+        busanFoodDto.setMainTitle("11해운대포장마차존");
+        busanFoodDto.setSubTitle("11낭만 추억 만들어 주는 해운대 포장마차");
+        Resources resources = this.getResources();
+        //busanFoodDto.setImg(BitmapFactory.decodeResource(resources, R.drawable.haeundae));
+        // Glide로 이미지 표시하기
+        String imageUrl = "https://www.visitbusan.net/uploadImgs/files/cntnts/20191230180157336_ttiel";
+        busanFoodDto.setImg(imageUrl);
+        busanFoodDto.setContext("sdfskjdgklsjgkjflglfkjglkdfjgkl 기타등등");
+        busanFoodDto.setPlace("11해운대포장마차촌");
+        busanFoodDto.setTag1("#바다");
+        busanFoodDto.setTag2("#술");
+        busanFoodDto.setTag3("#낭만");
+        busanFoodDto.setCall("01054924543");
+        busanFoodDtoListBytags.add(busanFoodDto);
+        busanFoodDtoListBytags.add(busanFoodDto);
+        busanFoodDtoListBytags.add(busanFoodDto);
+        busanFoodDtoListBytags.add(busanFoodDto);
+
 
         //리스트뷰에 Adapter 설정
         listView.setAdapter(adapter);
@@ -99,8 +119,10 @@ public class BusanFoodStep1 extends AppCompatActivity {
                 // position 값이랑 Dto 넘겨주기
                 System.out.println("리스트뷰 클릭: food !!!!!!!!"+position);
                 Intent intent = new Intent(getApplicationContext(), FullImage.class);
-                intent.putExtra("position",Integer.toString(position));
-                intent.putExtra("festivalList",FoodList);
+                //intent.putExtra("position",Integer.toString(position));
+                System.out.println(busanFoodDtoListBytags.get(position).getCall()+"여기에요 여기 !!");
+                intent.putExtra("Dto",busanFoodDtoListBytags.get(position));
+                //.getMainTitle()
                 startActivity(intent);
             }
         });
@@ -110,6 +132,7 @@ public class BusanFoodStep1 extends AppCompatActivity {
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View v) {
+                System.out.println("데이트 버튼 클릭: food !!!!!!!!");
                 if(clickCheck[0] == false ) { // 첫 체크
                     if(checkSize(clickCheck) < 3){
                         keywordDate.setBackgroundResource(R.drawable.clicked_button);
@@ -464,6 +487,7 @@ public class BusanFoodStep1 extends AppCompatActivity {
             mainTitle.setText(busanFoodDto.getMainTitle());
             place.setText(busanFoodDto.getPlace());
             subTitle.setText(busanFoodDto.getSubTitle());
+            //tag 1, 2, 3 뭐뭐 들어가는지
             tag1.setText(busanFoodDto.getTag1());
             tag2.setText(busanFoodDto.getTag2());
             tag3.setText(busanFoodDto.getTag3());

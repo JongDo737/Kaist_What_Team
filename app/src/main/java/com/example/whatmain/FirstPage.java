@@ -10,6 +10,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class FirstPage extends AppCompatActivity {
     FrameLayout foodFrame;
     FrameLayout enterFrame;
@@ -19,10 +21,20 @@ public class FirstPage extends AppCompatActivity {
     TextView degree;
     TextView rainPorb;
     ConstraintLayout weatherBackground;
+
+    String username;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_page);
+
+        TextView firstPageUserName=(TextView) findViewById(R.id.firstPageUserName);
+
+        //로그인 시 username 변경 **********************
+        String username="지나";
+        firstPageUserName.setText(username+"님 안녕하세요!");
+
         setWeather();
         foodFrame = findViewById(R.id.foodFrame);
         enterFrame = findViewById(R.id.enterFrame);
