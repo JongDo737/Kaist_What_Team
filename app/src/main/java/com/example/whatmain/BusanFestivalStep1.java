@@ -29,6 +29,7 @@ public class BusanFestivalStep1 extends AppCompatActivity {
 
     BusanFestivalDto busanFestivalDto;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +39,8 @@ public class BusanFestivalStep1 extends AppCompatActivity {
         adapter = new BusanFestivalStep1.ListViewAdapter(this, festivalList);
 // 임의의 데이터 삽입///////////////////////////////////////////////
         busanFestivalDto = new BusanFestivalDto();
+
+
         busanFestivalDto.setMainTitle("부산불꽃축제");
         busanFestivalDto.setSubTitle("아름다운 부산 밤하늘의 하모니, 부산불꽃축제");
         // Glide로 이미지 표시하기

@@ -21,7 +21,9 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class DBconnect extends AppCompatActivity {
+import java.util.ArrayList;
+
+public class DBconnect extends AppCompatActivity implements DBconnectImpl{
 
     EditText editTextID;
     EditText editTextPW;
@@ -113,7 +115,8 @@ public class DBconnect extends AppCompatActivity {
     }
 
     //회원가입
-    public void insertUser(UserDto userDto){
+    @Override
+    public int insertUser(UserDto userDto){
         String url = localhost + "/insertUser";
 
         //JSON형식으로 데이터 통신을 진행합니다!
@@ -171,6 +174,19 @@ public class DBconnect extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        return 1;
+    }
+
+    @Override
+    public ArrayList<BusanFoodDto> getFoodListByTags(ArrayList<String> tags){
+
+
+        return null;
+    }
+
+    @Override
+    public ArrayList<BusanFestivalDto> getAllFestival() {
+        return null;
     }
 
     void easyToast(String str){

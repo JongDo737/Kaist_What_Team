@@ -45,8 +45,10 @@ public class BusanFoodStep1 extends AppCompatActivity {
     boolean clickCheck[]= new boolean[11];
     ArrayList<String> tags = new ArrayList<>();
     ArrayList<BusanFoodDto> FoodList = new ArrayList<>();
+    ArrayList<BusanFoodDto> busanFoodDtoListBytags = new ArrayList<>();
 
     BusanFoodDto busanFoodDto;
+    DBconnectImpl dBconnect;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,27 +67,27 @@ public class BusanFoodStep1 extends AppCompatActivity {
         keyOcean = findViewById(R.id.keyOcean);
 
         listView = (ListView) findViewById(R.id.listView);
-        adapter = new ListViewAdapter(this, FoodList);
-
-        // 임의의 데이터 삽입///////////////////////////////////////////////
-        busanFoodDto = new BusanFoodDto();
-        busanFoodDto.setMainTitle("해운대포장마차존");
-        busanFoodDto.setSubTitle("낭만 추억 만들어 주는 해운대 포장마차");
-        Resources resources = this.getResources();
-        //busanFoodDto.setImg(BitmapFactory.decodeResource(resources, R.drawable.haeundae));
-        // Glide로 이미지 표시하기
-        String imageUrl = "https://www.visitbusan.net/uploadImgs/files/cntnts/20191230180157336_ttiel";
-        busanFoodDto.setImg(imageUrl);
-
-        busanFoodDto.setPlace("해운대포장마차촌");
-        busanFoodDto.setTag1("#바다");
-        busanFoodDto.setTag2("#술");
-        busanFoodDto.setTag3("#낭만");
-        FoodList.add(busanFoodDto);
-        FoodList.add(busanFoodDto);
-        FoodList.add(busanFoodDto);
-        FoodList.add(busanFoodDto);
-        ///////////////////////////////////////////////////////////////
+        adapter = new ListViewAdapter(this, busanFoodDtoListBytags);
+//
+//        // 임의의 데이터 삽입///////////////////////////////////////////////
+//        busanFoodDto = new BusanFoodDto();
+//        busanFoodDto.setMainTitle("해운대포장마차존");
+//        busanFoodDto.setSubTitle("낭만 추억 만들어 주는 해운대 포장마차");
+//        Resources resources = this.getResources();
+//        //busanFoodDto.setImg(BitmapFactory.decodeResource(resources, R.drawable.haeundae));
+//        // Glide로 이미지 표시하기
+//        String imageUrl = "https://www.visitbusan.net/uploadImgs/files/cntnts/20191230180157336_ttiel";
+//        busanFoodDto.setImg(imageUrl);
+//
+//        busanFoodDto.setPlace("해운대포장마차촌");
+//        busanFoodDto.setTag1("#바다");
+//        busanFoodDto.setTag2("#술");
+//        busanFoodDto.setTag3("#낭만");
+//        FoodList.add(busanFoodDto);
+//        FoodList.add(busanFoodDto);
+//        FoodList.add(busanFoodDto);
+//        FoodList.add(busanFoodDto);
+//        ///////////////////////////////////////////////////////////////
 
 
         //리스트뷰에 Adapter 설정
@@ -397,7 +399,8 @@ public class BusanFoodStep1 extends AppCompatActivity {
     }
     public void busanFoodByTags(ArrayList<String> tags){
         //DB에서 데이터 불러오기
-
+        busanFoodDtoListBytags = dBconnect.getFoodListByTags(tags);
+        adapter.notifyDataSetChanged();
     }
 
 

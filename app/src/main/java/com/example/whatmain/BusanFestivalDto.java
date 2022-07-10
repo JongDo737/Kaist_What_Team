@@ -6,7 +6,6 @@ public class BusanFestivalDto {
     String mainTitle ;
     String place;
     String subTitle;
-    String shortContext;
     String img;
     String context;
     double latitude;
@@ -55,12 +54,6 @@ public class BusanFestivalDto {
     }
     public void setSubTitle(String subTitle) {
         this.subTitle = subTitle;
-    }
-    public String getShortContext() {
-        return shortContext;
-    }
-    public void setShortContext(String shortContext) {
-        this.shortContext = shortContext;
     }
     public String getImg() {
         return img;
