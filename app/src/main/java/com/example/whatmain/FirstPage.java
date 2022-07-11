@@ -51,6 +51,7 @@ public class FirstPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),BusanFoodStep1.class);
+                intent.putExtra("userId", userid);
                 startActivity(intent);
             }
         });
@@ -58,6 +59,7 @@ public class FirstPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),BusanFestivalStep1.class);
+                intent.putExtra("userId", userid);
                 startActivity(intent);
             }
         });
@@ -65,6 +67,7 @@ public class FirstPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),BusanTodoStep1.class);
+                intent.putExtra("userId", userid);
                 startActivity(intent);
             }
         });
@@ -79,7 +82,8 @@ public class FirstPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),MyPageActivity.class);
-                intent.putExtra("id",username);
+                intent.putExtra("userId", userid);
+                intent.putExtra("username",username);
                 //intent.putExtra("pw",userpw);
                 startActivity(intent);
             }

@@ -44,12 +44,13 @@ public class BusanFestivalStep1 extends AppCompatActivity implements Serializabl
 
     BusanFestivalDto busanFestivalDto;
     Button test;
-
+    String userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_busan_festival_step1);
-
+        Intent intent = getIntent();
+        userId = intent.getStringExtra("userId");
         listView = (ListView) findViewById(R.id.listView);
         getAllFestival();
 
@@ -63,6 +64,7 @@ public class BusanFestivalStep1 extends AppCompatActivity implements Serializabl
                 //intent.putExtra("position",Integer.toString(position));
                 System.out.println(busanFestivalDtoList.get(position).getCall()+" festival 여기에요 여기 !!");
                 intent.putExtra("Dto", busanFestivalDtoList.get(position));
+                intent.putExtra("userId",userId);
                 //.getMainTitle();
                 startActivity(intent);
             }

@@ -53,6 +53,7 @@ public class BusanFoodStep1 extends AppCompatActivity {
     ArrayList<String> tags = new ArrayList<>();
     ArrayList<BusanFoodDto> busanFoodDtoListBytags = new ArrayList<>();
     BusanFoodDto busanFoodDto;
+    String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,9 +70,10 @@ public class BusanFoodStep1 extends AppCompatActivity {
         keywordRomance = findViewById(R.id.keywordRomance);
         keySeafood = findViewById(R.id.keySeafood);
         keyOcean = findViewById(R.id.keyOcean);
-
         listView = (ListView) findViewById(R.id.listView);
 
+        Intent intent = getIntent();
+        userId = intent.getStringExtra("userId");
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -81,7 +83,7 @@ public class BusanFoodStep1 extends AppCompatActivity {
                 //intent.putExtra("position",Integer.toString(position));
                 System.out.println(busanFoodDtoListBytags.get(position).getCall()+"여기에요 여기 !!");
                 intent.putExtra("Dto",busanFoodDtoListBytags.get(position));
-                //.getMainTitle()
+                intent.putExtra("userId", userId);
                 startActivity(intent);
             }
         });

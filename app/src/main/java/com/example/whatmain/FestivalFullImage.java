@@ -13,6 +13,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -21,26 +28,28 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class FestivalFullImage extends AppCompatActivity implements OnMapReadyCallback, Serializable {
 
     private GoogleMap mMap;
     Button button;
-
+    ImageView heartsave;
     double foodLatitude;
     double foodLongitude;
     BusanFestivalDto get_festivalDto;
-    String foodUserName;
-
+    boolean checkHeart = false;
+    String userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         System.out.println("festivalFullImage야!!!!!!!");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_festival_full_image);
-
-        //userName 하드코딩된 거 바꿔야 함 ***********************
-        foodUserName="지나";
 
         TextView foodMainTitle=(TextView) findViewById(R.id.foodMainTitle);
         //TextView foodPlace1=(TextView) findViewById(R.id.foodPlace1);
@@ -55,6 +64,14 @@ public class FestivalFullImage extends AppCompatActivity implements OnMapReadyCa
 
         //intent 에 클릭된 dto 받아오기
         Intent i=getIntent();
+        userId = i.getStringExtra("userId");
+
+        // 첫화면 하트 초기화
+        try {
+            getHeartByUserId(Integer.parseInt(userId));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         //intent 에 클릭된 dto 로 업데이트 해주기
         get_festivalDto=(BusanFestivalDto) i.getSerializableExtra("Dto");
         System.out.println(get_festivalDto.getCall()+"awifnaseogasehiogasogiasjgioasejgio");
@@ -98,14 +115,30 @@ public class FestivalFullImage extends AppCompatActivity implements OnMapReadyCa
         });
 
         //저장하기 하트 클릭
-        ImageView heartsave=(ImageView) findViewById(R.id.heartSave);
+        heartsave=(ImageView) findViewById(R.id.heartSave);
         heartsave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 heartsave.setImageResource(R.drawable.redheart);
-                // userName 저장 누른 항목 리스트에 추가하기 *****************************
-                //userid랑 선택 리스트값
 
+                // 좋아요 상태일때 클릭
+                if(checkHeart){
+                    heartsave.setImageResource(R.drawable.heart);
+                    // 좋아요 취소
+                    checkHeart = false;
+
+                    dislikeHeart(Integer.parseInt(userId),get_festivalDto.getId());
+
+
+                }else {
+                    // 하트 빈칸일 때때
+                    heartsave.setImageResource(R.drawable.redheart);
+                    // 좋아요 넣어주기
+                    checkHeart = true;
+                    System.out.println("온클릭~~~~~~~~~ id :"+get_festivalDto.getId());
+                    likeHeart(Integer.parseInt(userId),get_festivalDto.getId());
+
+                }
             }
         });
         ImageView foodCalendar=(ImageView) findViewById(R.id.foodCalendar);
@@ -122,7 +155,6 @@ public class FestivalFullImage extends AppCompatActivity implements OnMapReadyCa
         foodCall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(getApplicationContext(),"Phone: "+get_foodDto.getCall(),Toast.LENGTH_LONG).show();
                 //전화걸기
                 if(get_festivalDto.getCall()==null || get_festivalDto.getCall()=="") {
                     //전화번호 없으면 Toast 띄우기
@@ -151,6 +183,166 @@ public class FestivalFullImage extends AppCompatActivity implements OnMapReadyCa
             }
         });
 
+    }
+    //초기화
+    public void getHeartByUserId(int userId) throws JSONException {
+        Localhost localhost = new Localhost();
+        String url = localhost.getLocalhost() + "/likeFestivalList";
+
+        //JSON형식으로 데이터 통신을 진행합니다!
+        JSONObject testjson = new JSONObject();
+        try {
+
+            testjson.put("userId", userId);
+
+            String jsonString = testjson.toString(); //완성된 json 포맷
+            System.out.println(jsonString);
+            //이제 전송해볼까요?
+            final RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+            final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, testjson, new Response.Listener<JSONObject>() {
+
+                //데이터 전달을 끝내고 이제 그 응답을 받을 차례입니다.
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+                        //받은 json형식의 응답을 받아
+
+                        JSONObject jsonObj_1 = new JSONObject(response.toString());
+                        System.out.println("jsonObj_1 : "+jsonObj_1);
+                        String jsonData = jsonObj_1.getString("body");
+                        System.out.println("jsonData : "+jsonData);
+                        JSONArray jsonArray = new JSONArray(jsonData);
+                        ArrayList<Integer> likeList = new ArrayList<>();
+                        for(int i=0; i<jsonArray.length();i++) {
+                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                            likeList.add(Integer.parseInt((String) jsonObject.get("festival_id")));
+                        }
+                        for(int i=0; i<likeList.size(); i++){
+                            if(get_festivalDto.getId() == likeList.get(i)) checkHeart =true;
+                        }
+                        if(checkHeart) heartsave.setImageResource(R.drawable.redheart);
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                //서버로 데이터 전달 및 응답 받기에 실패한 경우 아래 코드가 실행됩니다.
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    error.printStackTrace();
+                }
+            });
+            jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            requestQueue.add(jsonObjectRequest);
+        }  catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+    public void likeHeart(int userId, int festivalId){
+        Localhost localhost = new Localhost();
+        String url = localhost.getLocalhost() + "/likeFestivalHeart";
+
+        //JSON형식으로 데이터 통신을 진행합니다!
+        JSONObject testjson = new JSONObject();
+        try {
+            //입력해둔 edittext의 id와 pw값을 받아와 put해줍니다 : 데이터를 json형식으로 바꿔 넣어주었습니다.
+            testjson.put("userId", userId);
+            testjson.put("festivalId", festivalId);
+
+            String jsonString = testjson.toString(); //완성된 json 포맷
+            System.out.println(jsonString);
+            //이제 전송해볼까요?
+            final RequestQueue requestQueue = Volley.newRequestQueue(this);
+            final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, testjson, new Response.Listener<JSONObject>() {
+
+                //데이터 전달을 끝내고 이제 그 응답을 받을 차례입니다.
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+                        //받은 json형식의 응답을 받아
+                        JSONObject jsonObject = new JSONObject(response.toString());
+//
+//                       //key값에 따라 value값을 쪼개 받아옵니다.
+                        String resultCode = jsonObject.getString("code");
+                        int loginCode = Integer.parseInt(resultCode);
+                        System.out.println("loginCode : "+loginCode);
+                        if(loginCode==1){
+                            Toast.makeText(getApplicationContext(), get_festivalDto.getMainTitle()+" 좋아요 !", Toast.LENGTH_SHORT).show();
+                        }else {
+                            Toast.makeText(getApplicationContext(), "좋아요 실패", Toast.LENGTH_SHORT).show();
+                        }
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                //서버로 데이터 전달 및 응답 받기에 실패한 경우 아래 코드가 실행됩니다.
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    error.printStackTrace();
+                }
+            });
+            jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            requestQueue.add(jsonObjectRequest);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void dislikeHeart(int userId, int festivalId){
+        Localhost localhost = new Localhost();
+        String url = localhost.getLocalhost() + "/dislikeFestivalHeart";
+
+        //JSON형식으로 데이터 통신을 진행합니다!
+        JSONObject testjson = new JSONObject();
+        try {
+            //입력해둔 edittext의 id와 pw값을 받아와 put해줍니다 : 데이터를 json형식으로 바꿔 넣어주었습니다.
+            testjson.put("userId", userId);
+            testjson.put("festivalId", festivalId);
+            String jsonString = testjson.toString(); //완성된 json 포맷
+            System.out.println(jsonString);
+            //이제 전송해볼까요?
+            final RequestQueue requestQueue = Volley.newRequestQueue(this);
+            final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, testjson, new Response.Listener<JSONObject>() {
+
+                //데이터 전달을 끝내고 이제 그 응답을 받을 차례입니다.
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+                        //받은 json형식의 응답을 받아
+                        JSONObject jsonObject = new JSONObject(response.toString());
+//
+//                       //key값에 따라 value값을 쪼개 받아옵니다.
+                        String resultCode = jsonObject.getString("code");
+                        int loginCode = Integer.parseInt(resultCode);
+                        System.out.println("loginCode : "+loginCode);
+                        if(loginCode==1){
+                            Toast.makeText(getApplicationContext(), get_festivalDto.getMainTitle()+" 좋아요 취소!", Toast.LENGTH_SHORT).show();
+                        }else {
+                            Toast.makeText(getApplicationContext(), "좋아요 취소 실패", Toast.LENGTH_SHORT).show();
+                        }
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                //서버로 데이터 전달 및 응답 받기에 실패한 경우 아래 코드가 실행됩니다.
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    error.printStackTrace();
+                }
+            });
+            jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            requestQueue.add(jsonObjectRequest);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
