@@ -55,6 +55,7 @@
                 android:id="@+id/editUsername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:hint="원래 id"
                 android:layout_weight="6"></EditText>
         </LinearLayout>
 
@@ -77,10 +78,11 @@
                 android:textSize="20dp"
                 android:text="비밀번호 : "></TextView>
             <EditText
-                android:id="@+id/signupPW"
+                android:id="@+id/editPW"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
+                android:hint="원래 비번"
                 android:layout_weight="6"></EditText>
         </LinearLayout>
 
@@ -148,7 +150,7 @@
             android:layout_height="25dp"
             android:src="@drawable/shell"></ImageView>
         <Button
-            android:id="@+id/commitBtn"
+            android:id="@+id/upDateBtn"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:theme="@style/Platform.MaterialComponents"

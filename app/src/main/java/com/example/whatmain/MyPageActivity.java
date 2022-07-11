@@ -1,8 +1,11 @@
 package com.example.whatmain;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
+import android.icu.text.SymbolTable;
 import android.os.Bundle;
 import android.view.View;
 
@@ -12,10 +15,28 @@ import java.util.ArrayList;
 
 public class MyPageActivity extends AppCompatActivity {
 
+    Fragment1 fragment1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_page);
+
+        Intent i=getIntent();
+        String userid=i.getStringExtra("id");
+        //String userpw=i.getStringExtra("pw");
+
+//        MyPageActivity fragment=new MyPageActivity();
+        fragment1=new Fragment1();
+
+        Bundle bundle=new Bundle();
+        System.out.println("MyPage!!!!! 여기!!!");
+        bundle.putString("id",userid);
+        System.out.println("My Page 여깅러안러ㅣㄴ"+bundle.getString("id"));
+        //bundle.putString("pw",userpw);
+        System.out.println("MyPage id: "+userid);
+        //System.out.println("MyPage pw: "+userpw);
+        fragment1.setArguments(bundle);
 
         ViewPager vp=findViewById(R.id.viewpager);
         VPAdapter adapter=new VPAdapter(getSupportFragmentManager());

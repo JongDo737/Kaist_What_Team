@@ -121,8 +121,11 @@ public class Login extends AppCompatActivity {
                             System.out.println("로긴성공");
                             Toast.makeText(getApplicationContext(),"로그인 성공",Toast.LENGTH_LONG).show();
                             String userId = jsonObject.getString("user_id");
+                            String username=jsonObject.getString("username");
+                            System.out.println("Login: userid!!!!! :"+userId);
                             Intent intent = new Intent(getApplicationContext(), FirstPage.class);
                             intent.putExtra("userId",userId);
+                            intent.putExtra("userName",username);
                             startActivity(intent);
                         }else if(loginCode == 2){
                             System.out.println("아이디 틀림");

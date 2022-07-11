@@ -22,7 +22,9 @@ public class FirstPage extends AppCompatActivity {
     TextView rainPorb;
     ConstraintLayout weatherBackground;
 
+    String userid;
     String username;
+    String userpw;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,11 @@ public class FirstPage extends AppCompatActivity {
         TextView firstPageUserName=(TextView) findViewById(R.id.firstPageUserName);
 
         //로그인 시 username 변경해야 함 **********************
-        String username="지나";
+        Intent i_login=getIntent();
+        userid=i_login.getStringExtra("userId");
+        username=i_login.getStringExtra("userName");
+        System.out.println("FirstPage!!!!: "+username);
+        //userpw="12334235";
         firstPageUserName.setText(username+"님 안녕하세요!");
 
         setWeather();
@@ -73,6 +79,8 @@ public class FirstPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),MyPageActivity.class);
+                intent.putExtra("id",username);
+                //intent.putExtra("pw",userpw);
                 startActivity(intent);
             }
         });
