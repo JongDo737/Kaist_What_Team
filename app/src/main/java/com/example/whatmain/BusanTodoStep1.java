@@ -531,7 +531,7 @@ public class BusanTodoStep1 extends AppCompatActivity {
             TextView tag1 = (TextView) convertView.findViewById(R.id.tag1);
             TextView tag2 = (TextView) convertView.findViewById(R.id.tag2);
             TextView tag3 = (TextView) convertView.findViewById(R.id.tag3);
-            ImageView heartClick = (ImageView) convertView.findViewById(R.id.heartClick);
+            //ImageView heartClick = (ImageView) convertView.findViewById(R.id.heartClick);
 
             //mainImg.setImageBitmap(busanTodoDto.getImg());
             Glide.with(getApplicationContext()).load(busanTodoDto.getImg()).into(mainImg);
@@ -550,12 +550,12 @@ public class BusanTodoStep1 extends AppCompatActivity {
 //                    Toast.makeText(context, busanTodoDto.getMainTitle(),Toast.LENGTH_SHORT).show();
 //                }
 //            });
-            heartClick.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    heartClick.setImageResource(R.drawable.redheart);
-                }
-            });
+//            heartClick.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    heartClick.setImageResource(R.drawable.redheart);
+//                }
+//            });
 
             return convertView;  //뷰 객체 반환
         }
