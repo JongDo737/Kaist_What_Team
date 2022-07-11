@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import java.io.Serializable;
 
 public class BusanFoodDto implements Serializable {
+    int id;
     String mainTitle ;
     String place;
     String subTitle;
@@ -17,7 +18,13 @@ public class BusanFoodDto implements Serializable {
     double longitude;
     //전화 string 추가
     String call;
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getMainTitle() {
         return mainTitle;

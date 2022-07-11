@@ -17,6 +17,17 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.android.volley.Request;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -37,7 +48,6 @@ public class SignUp extends AppCompatActivity {
 
     DatePickerDialog datePickerDialog;
     NowDate nowDate = new NowDate();
-    DBconnect dBconnect = new DBconnect();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,10 +130,7 @@ public class SignUp extends AppCompatActivity {
                                 userDto.setGender("female");
                             }
                             //회원가입 DB에 넣기
-                            dBconnect.insertUser(userDto, getApplicationContext());
-                            //회원가입 완료 후 다시 로그인 창
-                            Intent intent = new Intent(getApplicationContext(),Login.class);
-                            startActivity(intent);
+                            insertUser(userDto);
                         }
                         else {
                             Toast.makeText(getApplicationContext(), "생일을 입력해주세요 !", Toast.LENGTH_SHORT).show();
@@ -140,6 +147,65 @@ public class SignUp extends AppCompatActivity {
         });
 
     }
+        //회원가입 DB
+    public void insertUser(UserDto userDto) {
+        Localhost localhost = new Localhost();
+        String url = localhost.getLocalhost() + "/insertUser";
+
+        //JSON형식으로 데이터 통신을 진행합니다!
+        JSONObject testjson = new JSONObject();
+        try {
+            //입력해둔 edittext의 id와 pw값을 받아와 put해줍니다 : 데이터를 json형식으로 바꿔 넣어주었습니다.
+            testjson.put("username", userDto.username);
+            testjson.put("password", userDto.password);
+            testjson.put("birth", userDto.birth);
+            testjson.put("gender", userDto.gender);
+            testjson.put("create_date", userDto.create_date);
+            testjson.put("update_date", userDto.update_date);
+            String jsonString = testjson.toString(); //완성된 json 포맷
+            System.out.println(testjson);
+            //이제 전송해볼까요?
+            final RequestQueue requestQueue = Volley.newRequestQueue(this);
+            final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, testjson, new Response.Listener<JSONObject>() {
+
+                //데이터 전달을 끝내고 이제 그 응답을 받을 차례입니다.
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+                        //받은 json형식의 응답을 받아
+                        JSONObject jsonObject = new JSONObject(response.toString());
+//
+//                        //key값에 따라 value값을 쪼개 받아옵니다.
+                        String resultCode = jsonObject.getString("code");
+                        int loginCode = Integer.parseInt(resultCode);
+                        System.out.println("loginCode : "+loginCode);
+                        if(loginCode==1){
+                            Toast.makeText(getApplicationContext(), "회원가입 성공", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), Login.class);
+                            startActivity(intent);
+                        }else {
+                            Toast.makeText(getApplicationContext(), "회원가입 실패", Toast.LENGTH_SHORT).show();
+                        }
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                //서버로 데이터 전달 및 응답 받기에 실패한 경우 아래 코드가 실행됩니다.
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    error.printStackTrace();
+                }
+            });
+            jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            requestQueue.add(jsonObjectRequest);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
 }

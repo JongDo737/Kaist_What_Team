@@ -112,7 +112,7 @@
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="12dp"
                 android:background="@drawable/round_button"
-                android:text="#맛집"
+                android:text="#피톤치드"
                 android:textSize="13dp"
                 tools:ignore="TouchTargetSizeCheck"></androidx.appcompat.widget.AppCompatButton>
 
@@ -167,7 +167,7 @@
                 android:layout_height="23dp"
                 android:layout_marginRight="12dp"
                 android:background="@drawable/round_button"
-                android:text="#해산물"
+                android:text="#체험"
                 android:textSize="13dp"
                 tools:ignore="TouchTargetSizeCheck"></androidx.appcompat.widget.AppCompatButton>
 

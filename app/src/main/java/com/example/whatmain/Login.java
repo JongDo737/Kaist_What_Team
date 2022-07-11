@@ -12,6 +12,17 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.android.volley.Request;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Login extends AppCompatActivity {
 
     EditText et_id;
@@ -23,7 +34,6 @@ public class Login extends AppCompatActivity {
     LinearLayout naverBtn;
     LinearLayout kakaoBtn;
 
-    DBconnectImpl dBconnect = new DBconnect();
 
 
     @Override
@@ -44,22 +54,10 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 String username = et_id.getText().toString();
                 String password = et_password.getText().toString();
-                Intent intent = new Intent(getApplicationContext(), FirstPage.class);
-                startActivity(intent);
-//                if(isEmpty(username, password) && login(username, password,Login.this)){
-//                    if(login(username,password,getApplicationContext())){
-//
-//                    }
-//                    else{
-//                        System.out.println("로그인 실패 !!!!!!!!!!!!!!!!!!!!");
-//                    }
-//
-//                }
-                System.out.println(et_id.getText().toString()+"여기여기여기여기"+ et_password.getText().toString());
-
-
-//                Intent intent = new Intent(getApplicationContext(), FirstPage.class);
-//                startActivity(intent);
+                // 빈칸 처리
+                if(isEmpty(username, password)){
+                    requestLogin(username,password);
+                }
             }
         });
         // 회원가입 버튼
@@ -70,8 +68,6 @@ public class Login extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
     }
     //빈칸체크
     public boolean isEmpty(String username, String password) {
@@ -95,27 +91,70 @@ public class Login extends AppCompatActivity {
         return true;
     }
 
-    // 회원체크
-    public boolean login(String username, String password, Context context){
-        //아이디 비밀번호 체크
-        boolean check = false;
-        int loginCode = dBconnect.requestLogin(username, password, context);
-        System.out.println(loginCode+"다시 로그인창");
-        if(loginCode == 1) {
-            check = true;
+    public void requestLogin(String ID, String PW) {
+        Localhost localhost = new Localhost();
+        String url = localhost.getLocalhost() + "/login" ;
+        //JSON형식으로 데이터 통신을 진행합니다!
+        JSONObject testjson = new JSONObject();
+        try {
+            //입력해둔 edittext의 id와 pw값을 받아와 put해줍니다 : 데이터를 json형식으로 바꿔 넣어주었습니다.
+            testjson.put("username", ID);
+            testjson.put("password", PW);
+            String jsonString = testjson.toString(); //완성된 json 포맷
+            //이제 전송해볼까요?
+            final RequestQueue requestQueue = Volley.newRequestQueue(this);
+            final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url,testjson, new Response.Listener<JSONObject>() {
 
-            Toast.makeText(getApplicationContext(),"로그인 성공했습니다.",Toast.LENGTH_SHORT).show();
+                //데이터 전달을 끝내고 이제 그 응답을 받을 차례입니다.
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+                        //받은 json형식의 응답을 받아
+                        JSONObject jsonObject = new JSONObject(response.toString());
+
+                        //key값에 따라 value값을 쪼개 받아옵니다.
+                        String resultCode = jsonObject.getString("login_code");
+
+                        int loginCode = Integer.parseInt(resultCode);
+                        System.out.println(loginCode+"ㅁㄴㅇㅁㄴㅇ");
+                        if(loginCode == 1){
+                            System.out.println("로긴성공");
+                            Toast.makeText(getApplicationContext(),"로그인 성공",Toast.LENGTH_LONG).show();
+                            String userId = jsonObject.getString("user_id");
+                            Intent intent = new Intent(getApplicationContext(), FirstPage.class);
+                            intent.putExtra("userId",userId);
+                            startActivity(intent);
+                        }else if(loginCode == 2){
+                            System.out.println("아이디 틀림");
+                            Toast.makeText(getApplicationContext(),"아이디가 존재하지 않습니다.",Toast.LENGTH_LONG).show();
+                        }else if(loginCode == 3){
+                            System.out.println("비번틀림");
+                            Toast.makeText(getApplicationContext(),"비밀번호가 틀렸습니다.",Toast.LENGTH_LONG).show();
+                        }else {
+                            System.out.println("시스템오류");
+                            Toast.makeText(getApplicationContext(),"시스템 오류",Toast.LENGTH_LONG).show();
+                        }
+
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                //서버로 데이터 전달 및 응답 받기에 실패한 경우 아래 코드가 실행됩니다.
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    error.printStackTrace();
+                }
+            });
+            jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            requestQueue.add(jsonObjectRequest);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
-        else if(loginCode == 2) {
-            Toast.makeText(getApplicationContext(),"아이디가 틀렸습니다.",Toast.LENGTH_SHORT).show();
-            check = false;
-        }
-        else if(loginCode == 3) {
-            Toast.makeText(getApplicationContext(),"비밀번호가 틀렸습니다.",Toast.LENGTH_SHORT).show();
-            check = false;
-        }
-        return check;
     }
+
 
 
 }

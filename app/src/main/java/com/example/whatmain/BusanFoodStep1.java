@@ -19,7 +19,18 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -41,8 +52,7 @@ public class BusanFoodStep1 extends AppCompatActivity {
     boolean clickCheck[]= new boolean[11];
     ArrayList<String> tags = new ArrayList<>();
     ArrayList<BusanFoodDto> busanFoodDtoListBytags = new ArrayList<>();
-
-    DBconnectImpl dBconnect = new DBconnect();
+    BusanFoodDto busanFoodDto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -371,21 +381,7 @@ public class BusanFoodStep1 extends AppCompatActivity {
         }
         busanFoodByTags(tags);
     }
-    //tag 클릭할 때마다 busanFoodDtoListBytags 다시 업데이트 해줘야 하니까 이렇게 함수 선언함
-    public void busanFoodByTags(ArrayList<String> tags){
-        //DB에서 데이터 불러오기
-        ArrayList<BusanFoodDto> busanFoodDtoListBytags = new ArrayList<>();
-        ArrayList<BusanFoodDto> dbList = dBconnect.getFoodListByTags(tags,getApplicationContext());
-        for(int i=0; i<dbList.size();i++){
-            busanFoodDtoListBytags.add(dbList.get(i));
-        }
 
-        adapter = new ListViewAdapter(this, busanFoodDtoListBytags);
-
-
-        //리스트뷰에 Adapter 설정
-        listView.setAdapter(adapter);
-    }
 
 
     /* 리스트뷰 어댑터 */
@@ -469,7 +465,103 @@ public class BusanFoodStep1 extends AppCompatActivity {
             return convertView;  //뷰 객체 반환
         }
     }
+    //tag 클릭할 때마다 busanFoodDtoListBytags 다시 업데이트 해줘야 하니까 이렇게 함수 선언함
+    public void busanFoodByTags(ArrayList<String> tags){
+        //DB에서 데이터 불러오기
+        getFoodListByTags(tags);
 
+    }
+    public void getFoodListByTags(ArrayList<String> tags){
+        Localhost localhost = new Localhost();
+        String url = localhost.getLocalhost() + "/getFoodByTags";
+
+        //JSON형식으로 데이터 통신을 진행합니다!
+        JSONObject testjson = new JSONObject();
+        try {
+            for(int i=0; i<tags.size(); i++){
+                testjson.put("tag"+(i+1) ,tags.get(i));
+            }
+            testjson.put("count", tags.size()+"");
+
+            String jsonString = testjson.toString(); //완성된 json 포맷
+            System.out.println("11111111111111111");
+            System.out.println(url);
+            System.out.println(testjson);
+            //이제 전송해볼까요?
+            final RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+            final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, testjson, new Response.Listener<JSONObject>() {
+
+                //데이터 전달을 끝내고 이제 그 응답을 받을 차례입니다.
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+                        //받은 json형식의 응답을 받아
+
+                        JSONObject jsonObj_1 = new JSONObject(response.toString());
+                        System.out.println("jsonObj_1 : "+jsonObj_1);
+                        String jsonData = jsonObj_1.getString("body");
+                        System.out.println("jsonData : "+jsonData);
+                        busanFoodDtoListBytags = jsonParseFoodData(jsonData);
+                        adapter = new ListViewAdapter(BusanFoodStep1.this, busanFoodDtoListBytags);
+                        //리스트뷰에 Adapter 설정
+                        listView.setAdapter(adapter);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                //서버로 데이터 전달 및 응답 받기에 실패한 경우 아래 코드가 실행됩니다.
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    error.printStackTrace();
+                }
+            });
+            jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(DefaultRetryPolicy.DEFAULT_TIMEOUT_MS, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            requestQueue.add(jsonObjectRequest);
+        }  catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+    public ArrayList<BusanFoodDto> jsonParseFoodData(String jsonStr) throws JSONException {
+
+        JSONArray jsonArray = new JSONArray(jsonStr);
+        ArrayList<BusanFoodDto> foodListS = new ArrayList<>();
+        System.out.println(jsonArray.length()+"wlfmawflawflawnfkawlnfawklfnawkflanfakl");
+        for(int i=0; i<jsonArray.length();i++){
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+            System.out.println(i+"번째"+(String)jsonObject.get("mainTitle"));
+
+            busanFoodDto = new BusanFoodDto();
+            busanFoodDto.setId((int)jsonObject.get("id"));
+            busanFoodDto.setMainTitle((String)jsonObject.get("mainTitle"));
+            busanFoodDto.setPlace((String)jsonObject.get("place"));
+            busanFoodDto.setSubTitle((String)jsonObject.get("subTitle"));
+            busanFoodDto.setImg((String)jsonObject.get("img"));
+            busanFoodDto.setContext((String)jsonObject.get("context"));
+            busanFoodDto.setLatitude((double)jsonObject.get("latitude"));
+            busanFoodDto.setLongitude((double)jsonObject.get("longitude"));
+            busanFoodDto.setCall((String)((String) jsonObject.get("tel")).replaceAll("-",""));
+            //태그 작업
+            String tags = (String)jsonObject.get("tag1");
+            String[] arrTags = tags.split(" ");
+            if(arrTags.length==1){
+                busanFoodDto.setTag1(arrTags[0]);
+            }else if(arrTags.length==2){
+                busanFoodDto.setTag1(arrTags[0]);
+                busanFoodDto.setTag2(arrTags[1]);
+            }
+            else if(arrTags.length==3){
+                busanFoodDto.setTag1(arrTags[0]);
+                busanFoodDto.setTag2(arrTags[1]);
+                busanFoodDto.setTag3(arrTags[2]);
+            }
+            foodListS.add(busanFoodDto);
+        }
+
+        return foodListS;
+
+    }
 }
 
 

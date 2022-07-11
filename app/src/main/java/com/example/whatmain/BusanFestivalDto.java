@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import java.io.Serializable;
 
 public class BusanFestivalDto implements Serializable {
+    int id;
     String mainTitle ;
     String place;
     String subTitle;
@@ -25,6 +26,14 @@ public class BusanFestivalDto implements Serializable {
 
     public void setCall(String call) {
         this.call = call;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public double getLatitude() {
