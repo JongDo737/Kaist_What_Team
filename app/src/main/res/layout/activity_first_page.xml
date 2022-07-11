@@ -25,16 +25,25 @@
             </ImageView>
             <TextView
                 android:id="@+id/firstPageUserName"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="종민님 안녕하세요!"
+                android:text="종민아 어서온나!"
                 android:gravity="center_vertical"
                 android:textSize="17dp"
                 android:textStyle="bold"
-                android:layout_marginLeft="10dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="70dp"
                 android:textColor="@color/black"
                 >
             </TextView>
+            <ImageView
+                android:id="@+id/editInfo"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="45dp"
+                android:layout_gravity="center"
+                android:src="@drawable/my_page">
+            </ImageView>
 
         </LinearLayout>
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -182,7 +191,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:clickable="false"
-                        android:text="뭐 할래?"
+                        android:text="어디 갈래?"
                         android:textStyle="bold"
                         android:layout_marginBottom="10dp"
                         android:textColor="@color/black"
@@ -212,7 +221,7 @@
                         android:layout_margin="10dp"
                         android:width="150dp"
                         android:height="120dp"
-                        android:src="@drawable/my_page"
+                        android:src="@drawable/heartlist"
                         android:adjustViewBounds="true"
                         android:scaleType="fitCenter"
                         android:background="@android:color/transparent">
@@ -222,7 +231,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:clickable="false"
-                        android:text="내 정보"
+                        android:text="함 봐라"
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         android:layout_marginBottom="10dp"
@@ -256,7 +265,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:clickable="false"
-                        android:text="부산 축제정보"
+                        android:text="뭐 할래?"
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         android:layout_marginBottom="10dp"
