@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment2">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:orientation="vertical"
+        tools:context=".SignUp">
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/redheart"></ImageView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:id="@+id/bucketFoodFrame"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/rounded_background"
+                android:orientation="horizontal"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/black">
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:padding="10dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="10dp"
+                        android:width="150dp"
+                        android:height="120dp"
+                        android:src="@drawable/what_eat"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
+                        android:background="@android:color/transparent"
+
+                        >
+                    </ImageView>
+
+                    <TextView
+                        android:layout_width="54dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="10dp"
+                        android:clickable="false"
+                        android:text="뭐 물래?"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"></TextView>
+                </LinearLayout>
+                <ListView
+                    android:id="@+id/listFood"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </ListView>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/bucketEnterFrame"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/rounded_background"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/black">
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:padding="10dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="10dp"
+                        android:width="150dp"
+                        android:height="120dp"
+                        android:src="@drawable/activity"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
+                        android:background="@android:color/transparent"
+                        >
+                    </ImageView>
+                    <TextView
+                        android:layout_width="54dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="10dp"
+                        android:clickable="false"
+                        android:text="뭐 할래?"
+                        android:textColor="@color/white"
+                        android:textStyle="bold">
+                    </TextView>
+                </LinearLayout>
+                <ListView
+                    android:id="@+id/listEnter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </ListView>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/bucketFireFrame"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/rounded_background"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/black">
+                <ImageView
+                    android:layout_width="40dp"
+                    android:padding="10dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="10dp"
+                    android:width="150dp"
+                    android:height="120dp"
+                    android:src="@drawable/fireworks"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:background="@android:color/transparent">
+
+                </ImageView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="10dp"
+                    android:clickable="false"
+                    android:text="부산 축제 정보"
+                    android:textColor="@color/white"
+                    android:textStyle="bold">
+                </TextView>
+            </LinearLayout>
+                <ListView
+                    android:id="@+id/listFire"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                </ListView>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</FrameLayout>

@@ -62,10 +62,17 @@ public class FirstPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+//        dressFrame.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(),BusanWearStep1.class);
+//                startActivity(intent);
+//            }
+//        });
         dressFrame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),BusanWearStep1.class);
+                Intent intent = new Intent(getApplicationContext(),MyPageActivity.class);
                 startActivity(intent);
             }
         });
@@ -93,25 +100,25 @@ public class FirstPage extends AppCompatActivity {
         }else {
             weatherBackground.setBackgroundResource(R.drawable.night);
         }
-        if(weather[1].equals("맑음")){
-            weatherImg.setImageResource(R.drawable.sun);
-            rainPorb.setText("강수확률 : "+weather[4]+"%");
-        }
-        else if(weather[1].equals("구름많음")){
-            weatherImg.setImageResource(R.drawable.cloudy);
-            rainPorb.setText("강수확률 : "+weather[4]+"%");
-        }
-        else if(weather[1].equals("흐림")){
-            weatherImg.setImageResource(R.drawable.cloud);
-            rainPorb.setText("강수확률 : "+weather[4]+"%");
-        }
-        else if(weather[1].equals("비")){
-            weatherImg.setImageResource(R.drawable.rain);
-            rainPorb.setText("강수량 : "+weather[5]+"mm");
-        }
-        else if(weather[1].equals("눈")){
-            weatherImg.setImageResource(R.drawable.snow);
-            rainPorb.setText("강수량 : "+weather[5]+"mm");
-        }
+//        if(weather[1].equals("맑음")){
+//            weatherImg.setImageResource(R.drawable.sun);
+//            rainPorb.setText("강수확률 : "+weather[4]+"%");
+//        }
+//        else if(weather[1].equals("구름많음")){
+//            weatherImg.setImageResource(R.drawable.cloudy);
+//            rainPorb.setText("강수확률 : "+weather[4]+"%");
+//        }
+//        else if(weather[1].equals("흐림")){
+//            weatherImg.setImageResource(R.drawable.cloud);
+//            rainPorb.setText("강수확률 : "+weather[4]+"%");
+//        }
+//        else if(weather[1].equals("비")){
+//            weatherImg.setImageResource(R.drawable.rain);
+//            rainPorb.setText("강수량 : "+weather[5]+"mm");
+//        }
+//        else if(weather[1].equals("눈")){
+//            weatherImg.setImageResource(R.drawable.snow);
+//            rainPorb.setText("강수량 : "+weather[5]+"mm");
+//        }
     }
 }

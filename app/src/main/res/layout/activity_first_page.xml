@@ -70,7 +70,6 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/rainPorb"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/weatherImg" />
 
@@ -82,12 +81,12 @@
                 android:layout_marginEnd="125dp"
                 android:layout_marginBottom="5dp"
                 android:text="강수량 : 15mm"
+                android:textColor="@color/white"
                 android:textSize="10dp"
                 android:textStyle="bold"
-                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.494"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/degree" />
 
@@ -213,7 +212,7 @@
                         android:layout_margin="10dp"
                         android:width="150dp"
                         android:height="120dp"
-                        android:src="@drawable/what_cloth"
+                        android:src="@drawable/my_page"
                         android:adjustViewBounds="true"
                         android:scaleType="fitCenter"
                         android:background="@android:color/transparent">
@@ -223,7 +222,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:clickable="false"
-                        android:text="뭐 입지?"
+                        android:text="내 정보"
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         android:layout_marginBottom="10dp"
