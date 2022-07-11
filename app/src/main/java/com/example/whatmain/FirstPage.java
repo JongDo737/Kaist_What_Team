@@ -62,10 +62,17 @@ public class FirstPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+//        dressFrame.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(),BusanWearStep1.class);
+//                startActivity(intent);
+//            }
+//        });
         dressFrame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),BusanWearStep1.class);
+                Intent intent = new Intent(getApplicationContext(),MyPageActivity.class);
                 startActivity(intent);
             }
         });

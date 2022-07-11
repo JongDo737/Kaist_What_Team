@@ -98,7 +98,7 @@ public class FoodFullImage extends AppCompatActivity implements OnMapReadyCallba
             public void onClick(View v) {
                 heartsave.setImageResource(R.drawable.redheart);
                 // userName 저장 누른 항목 리스트에 추가하기 *****************************
-                //userid랑 선택 리스트값
+                //userid랑 선택 position의 mainTitle
 
             }
         });

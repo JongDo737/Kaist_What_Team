@@ -6,12 +6,15 @@
         <entry key="..\:/Users/Jina Kim/AndroidStudioProjects/What/Kaist_What_Team/app/src/main/res/drawable/rounded_background.xml" value="0.1765" />
         <entry key="..\:/Users/Jina Kim/AndroidStudioProjects/What/Kaist_What_Team/app/src/main/res/layout/activity_busan_festival_step1.xml" value="0.15260416666666668" />
         <entry key="..\:/Users/Jina Kim/AndroidStudioProjects/What/Kaist_What_Team/app/src/main/res/layout/activity_busan_food_step1.xml" value="0.1" />
+        <entry key="..\:/Users/Jina Kim/AndroidStudioProjects/What/Kaist_What_Team/app/src/main/res/layout/activity_busan_todo_step1.xml" value="0.178125" />
+        <entry key="..\:/Users/Jina Kim/AndroidStudioProjects/What/Kaist_What_Team/app/src/main/res/layout/activity_busan_wear_step1.xml" value="0.178125" />
         <entry key="..\:/Users/Jina Kim/AndroidStudioProjects/What/Kaist_What_Team/app/src/main/res/layout/activity_festival_full_image.xml" value="0.264" />
-        <entry key="..\:/Users/Jina Kim/AndroidStudioProjects/What/Kaist_What_Team/app/src/main/res/layout/activity_first_page.xml" value="0.1" />
+        <entry key="..\:/Users/Jina Kim/AndroidStudioProjects/What/Kaist_What_Team/app/src/main/res/layout/activity_first_page.xml" value="0.264" />
         <entry key="..\:/Users/Jina Kim/AndroidStudioProjects/What/Kaist_What_Team/app/src/main/res/layout/activity_food_full_image.xml" value="0.264" />
         <entry key="..\:/Users/Jina Kim/AndroidStudioProjects/What/Kaist_What_Team/app/src/main/res/layout/activity_full_image.xml" value="0.176" />
         <entry key="..\:/Users/Jina Kim/AndroidStudioProjects/What/Kaist_What_Team/app/src/main/res/layout/activity_login.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/Jina Kim/AndroidStudioProjects/What/Kaist_What_Team/app/src/main/res/layout/activity_main.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/Jina Kim/AndroidStudioProjects/What/Kaist_What_Team/app/src/main/res/layout/activity_my_page.xml" value="0.25" />
         <entry key="..\:/Users/Jina Kim/AndroidStudioProjects/What/Kaist_What_Team/app/src/main/res/layout/activity_sign_up.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/Jina Kim/AndroidStudioProjects/What/Kaist_What_Team/app/src/main/res/layout/activity_splash_main.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/Jina Kim/AndroidStudioProjects/What/Kaist_What_Team/app/src/main/res/layout/appbar.xml" value="0.17983789260385005" />
@@ -22,10 +25,19 @@
         <entry key="..\:/Users/Jina Kim/AndroidStudioProjects/What/Kaist_What_Team/app/src/main/res/layout/busan_todo_list.xml" value="0.2667572463768116" />
         <entry key="..\:/Users/Jina Kim/AndroidStudioProjects/What/Kaist_What_Team/app/src/main/res/layout/busan_wear_list.xml" value="0.3770833333333333" />
         <entry key="..\:/Users/Jina Kim/AndroidStudioProjects/What/Kaist_What_Team/app/src/main/res/layout/first_page.xml" value="0.2526041666666667" />
+        <entry key="..\:/Users/Jina Kim/AndroidStudioProjects/What/Kaist_What_Team/app/src/main/res/layout/fragment1.xml" value="0.24895833333333334" />
+        <entry key="..\:/Users/Jina Kim/AndroidStudioProjects/What/Kaist_What_Team/app/src/main/res/layout/fragment2.xml" value="0.24895833333333334" />
+        <entry key="..\:/Users/Jina Kim/AndroidStudioProjects/What/Kaist_What_Team/app/src/main/res/layout/fragment_blank.xml" value="0.25" />
         <entry key="..\:/Users/Jina Kim/AndroidStudioProjects/What/Kaist_What_Team/app/src/main/res/layout/fragment_calendar.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/Jina Kim/AndroidStudioProjects/What/Kaist_What_Team/app/src/main/res/layout/fragment_fragment1.xml" value="0.23541666666666666" />
+        <entry key="..\:/Users/Jina Kim/AndroidStudioProjects/What/Kaist_What_Team/app/src/main/res/layout/fragment_fragment_1.xml" value="0.2" />
+        <entry key="..\:/Users/Jina Kim/AndroidStudioProjects/What/Kaist_What_Team/app/src/main/res/layout/fragment_fragment_2.xml" value="0.264" />
+        <entry key="..\:/Users/Jina Kim/AndroidStudioProjects/What/Kaist_What_Team/app/src/main/res/layout/fragment_fragment_3.xml" value="0.13177083333333334" />
         <entry key="..\:/Users/Jina Kim/AndroidStudioProjects/What/Kaist_What_Team/app/src/main/res/layout/header.xml" value="0.14907407407407408" />
+        <entry key="..\:/Users/Jina Kim/AndroidStudioProjects/What/Kaist_What_Team/app/src/main/res/layout/list_row.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/Jina Kim/AndroidStudioProjects/What/Kaist_What_Team/app/src/main/res/layout/splash.xml" value="0.2526041666666667" />
         <entry key="..\:/Users/Jina Kim/AndroidStudioProjects/What/Kaist_What_Team/app/src/main/res/layout/style.xml" value="0.2713541666666667" />
+        <entry key="..\:/Users/Jina Kim/AndroidStudioProjects/What/Kaist_What_Team/app/src/main/res/layout/user_final_list.xml" value="0.3374094202898551" />
         <entry key="..\:/Users/Jina Kim/AndroidStudioProjects/What/Kaist_What_Team/app/src/main/res/menu/drawerlayout.xml" value="0.4" />
         <entry key="..\:/Users/yua10/AndroidStudioProjects/What/app/src/main/res/drawable/border_button.xml" value="0.3095" />
         <entry key="..\:/Users/yua10/AndroidStudioProjects/What/app/src/main/res/drawable/gradient.xml" value="0.2005" />
