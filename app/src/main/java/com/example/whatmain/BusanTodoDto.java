@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import java.io.Serializable;
 public class BusanTodoDto implements Serializable{
 
+    int id;
     String mainTitle ;
     String place;
     String subTitle;
@@ -16,6 +17,14 @@ public class BusanTodoDto implements Serializable{
     String tag3;
     double latitude;
     double longitude;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getMainTitle() {
         return mainTitle;
     }
