@@ -34,6 +34,7 @@ public class EditProfile extends AppCompatActivity {
 
         Intent i_login=getIntent();
         userId=i_login.getStringExtra("userId");
+
         username=i_login.getStringExtra("username");
         System.out.println("userId1111 : "+userId);
          edit_id=(EditText) findViewById(R.id.editUsername);
@@ -83,7 +84,7 @@ public class EditProfile extends AppCompatActivity {
                         JSONObject jsonObject = new JSONObject(response.toString());
 //
 //                       //key값에 따라 value값을 쪼개 받아옵니다.
-                        String resultCode = jsonObject.getString("code");
+                        String resultCode = jsonObject.getString("update_code");
                         int loginCode = Integer.parseInt(resultCode);
                         System.out.println("loginCode : "+loginCode);
                         if(loginCode==1){
