@@ -35,7 +35,7 @@
                 android:layout_weight="1"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/rounded_background"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 >
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -54,8 +54,7 @@
                         android:scaleType="fitCenter"
                         android:background="@android:color/transparent"
 
-                        >
-                    </ImageView>
+                        />
 
                     <TextView
                         android:layout_width="54dp"
@@ -80,7 +79,7 @@
                 android:layout_weight="1"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/rounded_background"
-                android:orientation="horizontal">
+                android:orientation="vertical">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -100,11 +99,11 @@
                         >
                     </ImageView>
                     <TextView
-                        android:layout_width="54dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="20dp"
                         android:layout_marginTop="10dp"
                         android:clickable="false"
-                        android:text="뭐 할래?"
+                        android:text="어디 갈래?"
                         android:textColor="@color/white"
                         android:textStyle="bold">
                     </TextView>
@@ -123,7 +122,7 @@
                 android:layout_weight="1"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/rounded_background"
-                android:orientation="horizontal">
+                android:orientation="vertical">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -147,7 +146,7 @@
                         android:layout_height="20dp"
                         android:layout_marginTop="10dp"
                         android:clickable="false"
-                        android:text="부산 축제 정보"
+                        android:text="뭐 할래?"
                         android:textColor="@color/white"
                         android:textStyle="bold">
                     </TextView>

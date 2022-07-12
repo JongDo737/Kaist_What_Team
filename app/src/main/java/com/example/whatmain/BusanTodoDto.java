@@ -3,6 +3,7 @@ package com.example.whatmain;
 import android.graphics.Bitmap;
 
 import java.io.Serializable;
+
 public class BusanTodoDto implements Serializable{
 
     int id;
