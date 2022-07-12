@@ -45,8 +45,6 @@ public class Login extends AppCompatActivity {
         et_password = findViewById(R.id.et_password);
         signinBtn = findViewById(R.id.signinBtn);
         signupBtn = findViewById(R.id.signupBtn);
-//        naverBtn = findViewById(R.id.naverBtn);
-//        kakaoBtn = findViewById(R.id.kakaoBtn);
 
         // 로그인 버튼
         signinBtn.setOnClickListener(new View.OnClickListener() {

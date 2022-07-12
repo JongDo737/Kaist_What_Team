@@ -176,7 +176,7 @@ public class TodoFullImage extends AppCompatActivity implements OnMapReadyCallba
     //초기화
     public void getHeartByUserId(int userId) throws JSONException {
         Localhost localhost = new Localhost();
-        String url = localhost.getLocalhost() + "/likeFoodList";
+        String url = localhost.getLocalhost() + "/likeTodoList";
 
         //JSON형식으로 데이터 통신을 진행합니다!
         JSONObject testjson = new JSONObject();
@@ -205,7 +205,7 @@ public class TodoFullImage extends AppCompatActivity implements OnMapReadyCallba
                         ArrayList<Integer> likeList = new ArrayList<>();
                         for(int i=0; i<jsonArray.length();i++) {
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
-                            likeList.add(Integer.parseInt((String) jsonObject.get("food_id")));
+                            likeList.add(Integer.parseInt((String) jsonObject.get("todo_id")));
                         }
                         for(int i=0; i<likeList.size(); i++){
                             if(get_todoDto.getId() == likeList.get(i)) checkHeart =true;
@@ -229,16 +229,16 @@ public class TodoFullImage extends AppCompatActivity implements OnMapReadyCallba
             e.printStackTrace();
         }
     }
-    public void likeHeart(int userId, int foodId){
+    public void likeHeart(int userId, int todoId){
         Localhost localhost = new Localhost();
-        String url = localhost.getLocalhost() + "/likeFoodHeart";
+        String url = localhost.getLocalhost() + "/likeTodoHeart";
 
         //JSON형식으로 데이터 통신을 진행합니다!
         JSONObject testjson = new JSONObject();
         try {
             //입력해둔 edittext의 id와 pw값을 받아와 put해줍니다 : 데이터를 json형식으로 바꿔 넣어주었습니다.
             testjson.put("userId", userId);
-            testjson.put("foodId", foodId);
+            testjson.put("todoId", todoId);
 
             String jsonString = testjson.toString(); //완성된 json 포맷
             System.out.println(jsonString);
@@ -282,16 +282,16 @@ public class TodoFullImage extends AppCompatActivity implements OnMapReadyCallba
         }
     }
 
-    public void dislikeHeart(int userId, int foodId){
+    public void dislikeHeart(int userId, int todoId){
         Localhost localhost = new Localhost();
-        String url = localhost.getLocalhost() + "/dislikeFoodHeart";
+        String url = localhost.getLocalhost() + "/dislikeTodoHeart";
 
         //JSON형식으로 데이터 통신을 진행합니다!
         JSONObject testjson = new JSONObject();
         try {
             //입력해둔 edittext의 id와 pw값을 받아와 put해줍니다 : 데이터를 json형식으로 바꿔 넣어주었습니다.
             testjson.put("userId", userId);
-            testjson.put("foodId", foodId);
+            testjson.put("todoId", todoId);
             String jsonString = testjson.toString(); //완성된 json 포맷
             System.out.println(jsonString);
             //이제 전송해볼까요?

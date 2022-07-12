@@ -34,6 +34,7 @@ public class EditProfile extends AppCompatActivity {
 
         Intent i_login=getIntent();
         userId=i_login.getStringExtra("userId");
+
         username=i_login.getStringExtra("username");
         System.out.println("userId1111 : "+userId);
          edit_id=(EditText) findViewById(R.id.editUsername);
