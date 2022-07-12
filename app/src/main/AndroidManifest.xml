@@ -19,6 +19,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".SplashHeart"
+            android:exported="false" />
+        <activity
             android:name=".TodoFullImage"
             android:exported="false" />
         <activity

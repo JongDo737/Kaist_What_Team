@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SplashMain">
+
+
+    <VideoView
+        android:id="@+id/heartVideo"
+        android:layout_width="300dp"
+        android:layout_height="180dp"
+        android:layout_marginStart="69dp"
+        android:layout_marginTop="196dp"
+        android:layout_marginEnd="70dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="125dp"
+        android:layout_marginBottom="198dp"
+        android:text="좋아요 리스트를 받아오는 중입니다!"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!--    <ImageView-->
+    <!--        android:id="@+id/imageView"-->
+    <!--        android:layout_width="213dp"-->
+    <!--        android:layout_height="88dp"-->
+    <!--        android:layout_marginStart="99dp"-->
+    <!--        android:layout_marginTop="123dp"-->
+    <!--        android:layout_marginEnd="99dp"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/heartVideo"-->
+    <!--        app:srcCompat="@drawable/busan" />-->
+</androidx.constraintlayout.widget.ConstraintLayout>

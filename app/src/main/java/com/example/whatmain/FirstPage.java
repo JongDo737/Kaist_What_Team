@@ -84,7 +84,7 @@ public class FirstPage extends AppCompatActivity {
         dressFrame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),HeartList.class);
+                Intent intent = new Intent(FirstPage.this,SplashHeart.class);
                 intent.putExtra("userId",userid);
                 startActivity(intent);
 
