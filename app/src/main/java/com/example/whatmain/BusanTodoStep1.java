@@ -543,19 +543,6 @@ public class BusanTodoStep1 extends AppCompatActivity {
             tag2.setText(busanTodoDto.getTag2());
             tag3.setText(busanTodoDto.getTag3());
 
-            //각 아이템 선택 event
-//            convertView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Toast.makeText(context, busanTodoDto.getMainTitle(),Toast.LENGTH_SHORT).show();
-//                }
-//            });
-//            heartClick.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    heartClick.setImageResource(R.drawable.redheart);
-//                }
-//            });
 
             return convertView;  //뷰 객체 반환
         }

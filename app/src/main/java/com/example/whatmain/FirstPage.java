@@ -85,6 +85,7 @@ public class FirstPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),HeartList.class);
+                intent.putExtra("userId",userid);
                 startActivity(intent);
 
             }
@@ -93,7 +94,7 @@ public class FirstPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(getApplicationContext(),EditProfile.class);
-                intent.putExtra("userid",userid);
+                intent.putExtra("userId",userid);
                 intent.putExtra("username",username);
                 //intent.putExtra("pw",userpw);
                 startActivity(intent);
