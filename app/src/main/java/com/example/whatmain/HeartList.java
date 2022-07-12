@@ -187,6 +187,7 @@ public class HeartList extends AppCompatActivity {
         });
         festivalListView.setClickable(true);
     }
+
     public void getFoodLikedList(int userId){
         Localhost localhost = new Localhost();
         String url = localhost.getLocalhost() + "/likeFoodAll";
@@ -516,7 +517,7 @@ public class HeartList extends AppCompatActivity {
                     busanTodoDtoListBytagsLoved = jsonParseTodoData(jsonData);
                     listViewTodoAdapter = new ListViewTodoAdapter(HeartList.this, busanTodoDtoListBytagsLoved);
                     //리스트뷰에 Adapter 설정
-                    festivalListView.setAdapter(listViewFestivalAdapter);
+                    todoListView.setAdapter(listViewTodoAdapter);
 
                 } catch (Exception e) {
                     e.printStackTrace();
