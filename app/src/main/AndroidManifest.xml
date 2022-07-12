@@ -10,10 +10,9 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:icon="@mipmap/ic_main3"
+        android:label="뭐 !"
         android:networkSecurityConfig="@xml/network_security_config"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WhatMain"
         android:usesCleartextTraffic="true"
@@ -35,9 +34,6 @@
             android:exported="false" />
         <activity
             android:name=".FestivalFullImage"
-            android:exported="false" />
-        <activity
-            android:name=".BusanWearStep1"
             android:exported="false" />
         <activity
             android:name=".BusanTodoStep1"

@@ -52,7 +52,7 @@ public class FestivalFullImage extends AppCompatActivity implements OnMapReadyCa
         setContentView(R.layout.activity_festival_full_image);
 
         TextView foodMainTitle=(TextView) findViewById(R.id.foodMainTitle);
-        //TextView foodPlace1=(TextView) findViewById(R.id.foodPlace1);
+        TextView foodPlace1=(TextView) findViewById(R.id.foodPlace1);
         TextView festivalDate=(TextView) findViewById(R.id.festivalDate);
         TextView festivalHomePage=(TextView) findViewById(R.id.festivalHomePage);
         ImageView foodFullImg=(ImageView) findViewById(R.id.foodFullImg);
@@ -76,7 +76,7 @@ public class FestivalFullImage extends AppCompatActivity implements OnMapReadyCa
         get_festivalDto=(BusanFestivalDto) i.getSerializableExtra("Dto");
         System.out.println(get_festivalDto.getCall()+"awifnaseogasehiogasogiasjgioasejgio");
         foodMainTitle.setText(get_festivalDto.getMainTitle());
-        //foodPlace1.setText(get_festivalDto.getPlace());
+        foodPlace1.setText(get_festivalDto.getPlace());
         //foodFullImg.setImageURI();
         Glide.with(getApplicationContext()).load(get_festivalDto.getImg()).into(foodFullImg);
         festivalDate.setText(get_festivalDto.getDate());
