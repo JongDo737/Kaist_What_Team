@@ -436,7 +436,6 @@ public class BusanFoodStep1 extends AppCompatActivity {
             TextView tag1 = (TextView) convertView.findViewById(R.id.tag1);
             TextView tag2 = (TextView) convertView.findViewById(R.id.tag2);
             TextView tag3 = (TextView) convertView.findViewById(R.id.tag3);
-            //ImageView heartClick = (ImageView) convertView.findViewById(R.id.heartClick);
 
             //mainImg.setImageBitmap(busanFoodDto.getImg());
             Glide.with(getApplicationContext()).load(busanFoodDto.getImg()).into(mainImg);
