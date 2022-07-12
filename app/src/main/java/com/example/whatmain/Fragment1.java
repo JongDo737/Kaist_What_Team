@@ -97,6 +97,6 @@ public class Fragment1 extends Fragment {
         return inflater.inflate(R.layout.fragment_fragment_1, container, false);
     }
     public void updateUser(String username, String password){
-        //DB에 userId, userPw 업데이트
+        
     }
 }

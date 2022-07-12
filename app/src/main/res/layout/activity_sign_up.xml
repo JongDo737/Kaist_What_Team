@@ -94,7 +94,9 @@
             android:id="@+id/calendar"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/calendar"
+            android:src="@drawable/calendar2"
+            android:layout_gravity="center"
+            android:background="@color/white"
             ></ImageButton>
 
 
