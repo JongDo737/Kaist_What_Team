@@ -19,7 +19,7 @@
             android:layout_height="100dp"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:src="@drawable/travel"></ImageView>
+            android:src="@drawable/travel2"></ImageView>
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
