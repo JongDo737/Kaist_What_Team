@@ -21,6 +21,7 @@ public class FirstPage extends AppCompatActivity {
     TextView degree;
     TextView rainPorb;
     ConstraintLayout weatherBackground;
+    ImageView editInfo;
 
     String userid;
     String username;
@@ -39,13 +40,14 @@ public class FirstPage extends AppCompatActivity {
         username=i_login.getStringExtra("userName");
         System.out.println("FirstPage!!!!: "+username);
         //userpw="12334235";
-        firstPageUserName.setText(username+"님 안녕하세요!");
+        firstPageUserName.setText(username+"아 어서온나!");
 
         setWeather();
         foodFrame = findViewById(R.id.foodFrame);
         enterFrame = findViewById(R.id.enterFrame);
         dressFrame = findViewById(R.id.dressFrame);
         festivalFrame = findViewById(R.id.festivalFrame);
+        editInfo=findViewById(R.id.editInfo);
 
         foodFrame.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,11 +80,20 @@ public class FirstPage extends AppCompatActivity {
 //                startActivity(intent);
 //            }
 //        });
+        //리스트 뷰 띄워주기
         dressFrame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),MyPageActivity.class);
-                intent.putExtra("userId", userid);
+                Intent intent = new Intent(getApplicationContext(),HeartList.class);
+                startActivity(intent);
+
+            }
+        });
+        editInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getApplicationContext(),EditProfile.class);
+                intent.putExtra("userid",userid);
                 intent.putExtra("username",username);
                 //intent.putExtra("pw",userpw);
                 startActivity(intent);

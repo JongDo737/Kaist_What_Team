@@ -17,7 +17,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="부산"
+            android:text="뭐"
             android:textSize="40dp"
             android:layout_marginRight="20dp"
             android:gravity="center_vertical"
@@ -31,7 +31,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="축제"
+            android:text="할래 ?"
             android:textSize="40dp"
             android:layout_marginLeft="20dp"
             android:gravity="center_vertical"
