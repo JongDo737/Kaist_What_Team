@@ -61,6 +61,7 @@ public class FoodFullImage extends AppCompatActivity implements OnMapReadyCallba
         TextView foodPlace2=(TextView) findViewById(R.id.foodPlace2);
         Intent i=getIntent();
         userId = i.getStringExtra("userId");
+        System.out.println("userId : " + userId);
         // 첫화면 하트 초기화
         try {
             getHeartByUserId(Integer.parseInt(userId));

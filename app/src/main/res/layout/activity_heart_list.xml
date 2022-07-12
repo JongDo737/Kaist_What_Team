@@ -64,6 +64,7 @@
                         android:text="뭐 물래?"
                         android:textColor="@color/white"
                         android:textStyle="bold"></TextView>
+
                 </LinearLayout>
                 <ListView
                     android:id="@+id/listFood"

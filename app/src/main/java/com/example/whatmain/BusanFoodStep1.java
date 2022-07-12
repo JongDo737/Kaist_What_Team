@@ -74,6 +74,7 @@ public class BusanFoodStep1 extends AppCompatActivity {
 
         Intent intent = getIntent();
         userId = intent.getStringExtra("userId");
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -448,20 +449,6 @@ public class BusanFoodStep1 extends AppCompatActivity {
             tag2.setText(busanFoodDto.getTag2());
             tag3.setText(busanFoodDto.getTag3());
 
-            //각 아이템 선택 event
-//            convertView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Toast.makeText(context, busanFoodDto.getMainTitle(),Toast.LENGTH_SHORT).show();
-//                }
-//            });
-
-//            heartClick.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    heartClick.setImageResource(R.drawable.redheart);
-//                }
-//            });
 
             return convertView;  //뷰 객체 반환
         }

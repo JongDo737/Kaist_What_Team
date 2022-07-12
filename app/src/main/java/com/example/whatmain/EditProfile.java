@@ -35,7 +35,7 @@ public class EditProfile extends AppCompatActivity {
         Intent i_login=getIntent();
         userId=i_login.getStringExtra("userId");
         username=i_login.getStringExtra("username");
-
+        System.out.println("userId1111 : "+userId);
          edit_id=(EditText) findViewById(R.id.editUsername);
          edit_pw=(EditText) findViewById(R.id.editPW);
          updateBtn=(Button) findViewById(R.id.upDateBtn);
@@ -48,28 +48,27 @@ public class EditProfile extends AppCompatActivity {
                 //내가 새롭게 입력한 게 edit_id로 참조되는 게 맞는 건가?
                 String newUsername=edit_id.getText().toString();
                 String newPassword=edit_pw.getText().toString();
-                updateUser(newUsername,newPassword,userId);
+                updateUser(newUsername,newPassword,Integer.parseInt(userId));
                 Toast.makeText(getApplicationContext(), "수정되었습니다", Toast.LENGTH_SHORT).show();
 //                Intent i_n=new Intent(getApplicationContext(),FirstPage.class);
 //                startActivity(i_n);
             }
         });
     }
-    public void userNameCheck(String username){
 
-    }
-    public void updateUser(String newUsername, String newPassword, String userId){
+    public void updateUser(String newUsername, String newPassword, int userId){
         //DB에 userId, userPw 업데이트
         Localhost localhost = new Localhost();
         String url = localhost.getLocalhost() + "/updateUser";
-
+        System.out.println("userId1111 : "+userId);
         //JSON형식으로 데이터 통신을 진행합니다!
         JSONObject testjson = new JSONObject();
         try {
             //입력해둔 edittext의 id와 pw값을 받아와 put해줍니다 : 데이터를 json형식으로 바꿔 넣어주었습니다.
-            testjson.put("userId", userId);
             testjson.put("newUsername", newUsername);
             testjson.put("newPassword", newPassword);
+            testjson.put("userId", userId);
+
             String jsonString = testjson.toString(); //완성된 json 포맷
             System.out.println(jsonString);
             //이제 전송해볼까요?
