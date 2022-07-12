@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -74,6 +75,29 @@ public class HeartList extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        foodListView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int action = event.getAction();
+                switch (action)
+                {
+                    case MotionEvent.ACTION_DOWN:
+                        // Disallow ScrollView to intercept touch events.
+                        v.getParent().requestDisallowInterceptTouchEvent(true);
+                        break;
+
+                    case MotionEvent.ACTION_UP:
+                        // Allow ScrollView to intercept touch events.
+                        v.getParent().requestDisallowInterceptTouchEvent(false);
+                        break;
+                }
+
+                // Handle ListView touch events.
+                v.onTouchEvent(event);
+                return true;
+            }
+        });
+        foodListView.setClickable(true);
 
         //Todo 하트에 해당하는 데이터 불러와서 list에 올리기
         todoListView = (ListView) findViewById(R.id.listEnter);
@@ -92,6 +116,29 @@ public class HeartList extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        todoListView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int action = event.getAction();
+                switch (action)
+                {
+                    case MotionEvent.ACTION_DOWN:
+                        // Disallow ScrollView to intercept touch events.
+                        v.getParent().requestDisallowInterceptTouchEvent(true);
+                        break;
+
+                    case MotionEvent.ACTION_UP:
+                        // Allow ScrollView to intercept touch events.
+                        v.getParent().requestDisallowInterceptTouchEvent(false);
+                        break;
+                }
+
+                // Handle ListView touch events.
+                v.onTouchEvent(event);
+                return true;
+            }
+        });
+        todoListView.setClickable(true);
 
         //Festival 하트에 해당하는 데이터 불러와서 list에 올리기
         festivalListView = (ListView) findViewById(R.id.listFire);
@@ -110,7 +157,31 @@ public class HeartList extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        festivalListView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int action = event.getAction();
+                switch (action)
+                {
+                    case MotionEvent.ACTION_DOWN:
+                        // Disallow ScrollView to intercept touch events.
+                        v.getParent().requestDisallowInterceptTouchEvent(true);
+                        break;
+
+                    case MotionEvent.ACTION_UP:
+                        // Allow ScrollView to intercept touch events.
+                        v.getParent().requestDisallowInterceptTouchEvent(false);
+                        break;
+                }
+
+                // Handle ListView touch events.
+                v.onTouchEvent(event);
+                return true;
+            }
+        });
+        festivalListView.setClickable(true);
     }
+
     public void getFoodLikedList(int userId){
         Localhost localhost = new Localhost();
         String url = localhost.getLocalhost() + "/likeFoodAll";
@@ -440,7 +511,7 @@ public class HeartList extends AppCompatActivity {
                     busanTodoDtoListBytagsLoved = jsonParseTodoData(jsonData);
                     listViewTodoAdapter = new ListViewTodoAdapter(HeartList.this, busanTodoDtoListBytagsLoved);
                     //리스트뷰에 Adapter 설정
-                    festivalListView.setAdapter(listViewFestivalAdapter);
+                    todoListView.setAdapter(listViewTodoAdapter);
 
                 } catch (Exception e) {
                     e.printStackTrace();
