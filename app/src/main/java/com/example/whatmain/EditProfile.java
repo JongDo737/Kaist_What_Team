@@ -49,9 +49,7 @@ public class EditProfile extends AppCompatActivity {
                 String newUsername=edit_id.getText().toString();
                 String newPassword=edit_pw.getText().toString();
                 updateUser(newUsername,newPassword,Integer.parseInt(userId));
-                Toast.makeText(getApplicationContext(), "수정되었습니다", Toast.LENGTH_SHORT).show();
-//                Intent i_n=new Intent(getApplicationContext(),FirstPage.class);
-//                startActivity(i_n);
+
             }
         });
     }
@@ -83,13 +81,17 @@ public class EditProfile extends AppCompatActivity {
                         JSONObject jsonObject = new JSONObject(response.toString());
 //
 //                       //key값에 따라 value값을 쪼개 받아옵니다.
-                        String resultCode = jsonObject.getString("code");
+                        String resultCode = jsonObject.getString("update_code");
                         int loginCode = Integer.parseInt(resultCode);
                         System.out.println("loginCode : "+loginCode);
                         if(loginCode==1){
                             Toast.makeText(getApplicationContext(), "회원수정 성공 !", Toast.LENGTH_SHORT).show();
                             System.out.println("성공 !");
                             init(newUsername);
+                            Intent i_n=new Intent(getApplicationContext(),FirstPage.class);
+                            i_n.putExtra("userId",userId);
+                            i_n.putExtra("userName",newUsername);
+                            startActivity(i_n);
                         }else {
                             Toast.makeText(getApplicationContext(), "회원수정 실패", Toast.LENGTH_SHORT).show();
                             System.out.println("실패 !");
