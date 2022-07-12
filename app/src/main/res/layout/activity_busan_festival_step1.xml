@@ -19,23 +19,29 @@
             android:layout_height="match_parent"
             android:text="뭐"
             android:textSize="40dp"
-            android:layout_marginRight="20dp"
-            android:gravity="center_vertical"
+            android:layout_weight="1"
+            android:gravity="center"
             android:textColor="@color/black"
             android:textStyle="bold"></TextView>
+
         <ImageView
-            android:layout_width="100dp"
+            android:layout_width="89dp"
             android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
             android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
             android:src="@drawable/songkran"></ImageView>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="할래 ?"
-            android:textSize="40dp"
-            android:layout_marginLeft="20dp"
             android:gravity="center_vertical"
+            android:layout_weight="1"
+            android:text="할래 ?"
             android:textColor="@color/black"
+            android:textSize="40dp"
             android:textStyle="bold"></TextView>
 
     </LinearLayout>

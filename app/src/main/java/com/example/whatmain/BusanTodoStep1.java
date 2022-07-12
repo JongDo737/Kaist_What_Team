@@ -82,8 +82,8 @@ public class BusanTodoStep1 extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // position 값이랑 Dto 넘겨주기
-                System.out.println("리스트뷰 클릭: food !!!!!!!!"+position);
-                Intent intent = new Intent(getApplicationContext(), FoodFullImage.class);
+                System.out.println("리스트뷰 클릭: todo !!!!!!!!"+position);
+                Intent intent = new Intent(getApplicationContext(), TodoFullImage.class);
                 intent.putExtra("Dto",TodoList.get(position));
                 intent.putExtra("userId", userId);
                 startActivity(intent);
@@ -374,7 +374,7 @@ public class BusanTodoStep1 extends AppCompatActivity {
         for(int i=0;i<tags.size(); i++){
             System.out.println(tags.get(i));
         }
-        busanFoodByTags(tags);
+        busanTodoByTags(tags);
     }
     public void deleteTag(String tag){
         tags.remove(tags.indexOf(tag));
@@ -382,14 +382,14 @@ public class BusanTodoStep1 extends AppCompatActivity {
         for(int i=0;i<tags.size(); i++){
             System.out.println(tags.get(i));
         }
-        busanFoodByTags(tags);
+        busanTodoByTags(tags);
     }
-    public void busanFoodByTags(ArrayList<String> tags){
+    public void busanTodoByTags(ArrayList<String> tags){
         //DB에서 데이터 불러오기
-        getFoodListByTags(tags);
+        getTodoListByTags(tags);
 
     }
-    public void getFoodListByTags(ArrayList<String> tags){
+    public void getTodoListByTags(ArrayList<String> tags){
         Localhost localhost = new Localhost();
         String url = localhost.getLocalhost() + "/getTodoByTags";
 

@@ -18,6 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="어디"
+            android:layout_weight="1"
             android:textSize="40dp"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="20dp"
@@ -27,12 +28,14 @@
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_weight="1"
             android:layout_gravity="center"
             android:src="@drawable/travel"></ImageView>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="갈래 ?"
+            android:layout_weight="1"
             android:textSize="40dp"
             android:layout_marginLeft="20dp"
             android:gravity="center_vertical"
@@ -44,7 +47,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="키워드를 선택해봐라 !"
+        android:text="키워드 선택해봐라 !"
         android:gravity="center"
         android:layout_marginTop="10dp"
         android:textSize="30dp"

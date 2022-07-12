@@ -40,7 +40,7 @@ public class FirstPage extends AppCompatActivity {
         username=i_login.getStringExtra("userName");
         System.out.println("FirstPage!!!!: "+username);
         //userpw="12334235";
-        firstPageUserName.setText(username+"아 어서온나!");
+        firstPageUserName.setText(username+" 어서온나!");
 
         setWeather();
         foodFrame = findViewById(R.id.foodFrame);
@@ -122,25 +122,25 @@ public class FirstPage extends AppCompatActivity {
         }else {
             weatherBackground.setBackgroundResource(R.drawable.night);
         }
-//        if(weather[1].equals("맑음")){
-//            weatherImg.setImageResource(R.drawable.sun);
-//            rainPorb.setText("강수확률 : "+weather[4]+"%");
-//        }
-//        else if(weather[1].equals("구름많음")){
-//            weatherImg.setImageResource(R.drawable.cloudy);
-//            rainPorb.setText("강수확률 : "+weather[4]+"%");
-//        }
-//        else if(weather[1].equals("흐림")){
-//            weatherImg.setImageResource(R.drawable.cloud);
-//            rainPorb.setText("강수확률 : "+weather[4]+"%");
-//        }
-//        else if(weather[1].equals("비")){
-//            weatherImg.setImageResource(R.drawable.rain);
-//            rainPorb.setText("강수량 : "+weather[5]+"mm");
-//        }
-//        else if(weather[1].equals("눈")){
-//            weatherImg.setImageResource(R.drawable.snow);
-//            rainPorb.setText("강수량 : "+weather[5]+"mm");
-//        }
+        if(weather[1].equals("맑음")){
+            weatherImg.setImageResource(R.drawable.sun);
+            rainPorb.setText("강수확률 : "+weather[4]+"%");
+        }
+        else if(weather[1].equals("구름많음")){
+            weatherImg.setImageResource(R.drawable.cloudy);
+            rainPorb.setText("강수확률 : "+weather[4]+"%");
+        }
+        else if(weather[1].equals("흐림")){
+            weatherImg.setImageResource(R.drawable.cloud);
+            rainPorb.setText("강수확률 : "+weather[4]+"%");
+        }
+        else if(weather[1].equals("비")){
+            weatherImg.setImageResource(R.drawable.rain);
+            rainPorb.setText("강수량 : "+weather[5]+"mm");
+        }
+        else if(weather[1].equals("눈")){
+            weatherImg.setImageResource(R.drawable.snow);
+            rainPorb.setText("강수량 : "+weather[5]+"mm");
+        }
     }
 }
