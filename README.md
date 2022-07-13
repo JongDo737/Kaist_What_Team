@@ -1,6 +1,6 @@
 # Kaist_What_Team
 
-# <image src="./app/src/main/res/drawable/travel2.png" width="20"/> 부산 풀코스
+# <image src="./app/src/main/res/drawable/travel2.png" width="50"/> 부산 풀코스
 
 
 ## 개발 팀원
