@@ -1,6 +1,7 @@
 # Kaist_What_Team
 
-# <image src="./app/src/main/res/drawable/s0.png" width="200"/> 부산 풀코스
+# <image src="./app/src/main/res/drawable/travel2.png" width="20"/> 부산 풀코스
+
 
 ## 개발 팀원
 
@@ -19,6 +20,7 @@
 <br>
 
 ## 앱 소개
+<image src="./app/src/main/res/drawable/s0.png" width="200"/> 
 
 뭐! 앱은 부산 맛집, 부산 명소, 부산 축제 추천 기능을 갖춘 앱입니다. <br>
 부산 맛집, 부산 명소, 부산 축제에서 좋아요를 누른 각 목록을 ‘함 봐라’탭에서 한번에 확인할 수 있습니다.
