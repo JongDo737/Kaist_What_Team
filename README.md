@@ -18,11 +18,11 @@ Client)
 - Target Device: Galaxy S7
 
 Server)
-- Stack: 
-- Language: 
-- Framework
-- DataBase: 
-- Package: 
+- Stack: Nodejs
+- Language: javascript
+- Framework: Express
+- DataBase: Mysql
+
 
 <br>
 
