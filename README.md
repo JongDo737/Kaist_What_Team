@@ -389,4 +389,7 @@ Server)
 ### 공공 데이터 활용
 <image src="./app/src/main/res/drawable/sdata.png" width="200"/>
 <image src="./app/src/main/res/drawable/sdata2.png" width="200"/>
+<br>
+
+<br>
 위의 공공 데이터를 활용하여 위와 같이 `BusanFoodDto`, `BusanFestivalDto`, `BusanTodoDto` 각각을 구성했습니다.
