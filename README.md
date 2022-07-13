@@ -1,6 +1,6 @@
 # Kaist_What_Team
 
-# <image src="./app/src/main/res/drawable/travel2.png" width="50"/> 부산 풀코스
+# <image src="./app/src/main/res/drawable/travel2.png" width="45"/> 부산 풀코스
 
 
 ## 개발 팀원
@@ -11,11 +11,18 @@
 <br>
 
 ## 개발 환경
-
+Client)
 - OS: Android (minSdk: 26, targetSdk: 32)
 - Language: Java
 - IDE: Android Studio
 - Target Device: Galaxy S7
+
+Server)
+- Stack: 
+- Language: 
+- Framework
+- DataBase: 
+- Package: 
 
 <br>
 
