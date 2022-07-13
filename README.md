@@ -384,3 +384,8 @@ Server)
 </div>
 
 - 함 봐라 버튼을 누르면, 뭐 물래, 어디 갈래, 뭐 할래 항목에서 좋아요를 누른 리스트를 ListView로 띄워줍니다. 리스트의 각 항목을 클릭하면 `FullImage` Activity로 이동합니다.
+
+* * *
+### 공공 데이터 활용
+<image src="./app/src/main/res/drawable/sdata.png" width="200"/>
+<image src="./app/src/main/res/drawable/sdata2.png" width="200"/>
